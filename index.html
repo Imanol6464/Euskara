@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Euskara App – Niveau 1 · Leçon 1</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>🇧🇦 Euskara App</h1>
+    <p class="subtitle">Niveau 1 · Leçon 1 : Salutations</p>
+  </header>
+
+  <main id="app" aria-live="polite">
+    <section id="home" class="view active">
+      <h2>Objectif</h2>
+      <p>Apprendre à saluer et à prendre congé en basque (matin, après-midi, soir).</p>
+      <div class="card">
+        <h3>Vocabulaire</h3>
+        <ul id="vocab-list">
+          <!-- Filled by JS -->
+        </ul>
+        <div class="legend">Clique sur 🔊 pour entendre la prononciation (via synthèse vocale).</div>
+      </div>
+      <div class="actions">
+        <button id="start-quiz" class="primary">Commencer les exercices</button>
+      </div>
+      <div id="progress" class="progress-wrap" hidden>
+        <div class="progress-bar" id="progress-bar" style="width:0%"></div>
+      </div>
+    </section>
+
+    <section id="quiz" class="view" hidden>
+      <div class="quiz-head">
+        <button id="back-home" class="ghost">⬅ Retour</button>
+        <div class="quiz-status">
+          <span id="q-counter">Question 1/1</span>
+          <span id="score">Score : 0</span>
+        </div>
+      </div>
+      <div id="question-area">
+        <!-- Filled by JS -->
+      </div>
+    </section>
+
+    <section id="result" class="view" hidden>
+      <div class="card center">
+        <h2>Résultat</h2>
+        <p id="final-text"></p>
+        <div class="actions">
+          <button id="retry" class="primary">Recommencer</button>
+          <button id="back-home-2" class="ghost">Retour à la leçon</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <small>Prototype MVP · Basque (Euskara). Progression sauvegardée localement.</small>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
