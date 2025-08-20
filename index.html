@@ -1,26 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Euskara · Ikasi — v8 (10 leçons complètes)</title>
+  <title>Euskara · Ikasi — v9 (10 leçons • 30 questions fixes)</title>
   <meta name="theme-color" content="#ffffff">
   <style>
-/* ================= LIGHT THEME, BASQUE ACCENTS ================= */
 :root{
-  --bg:#f9fafb;
-  --surface:#ffffff;
-  --surface-2:#f3f4f6;
-  --border:#e5e7eb;
-  --text:#111827;
-  --muted:#6b7280;
-  --green:#007A3D;   /* Basque green */
-  --green2:#0a6f3a;
-  --red:#D90429;     /* Basque red */
-  --blue:#2563eb;
-  --ok:#16a34a;
-  --warn:#ef4444;
+  --bg:#f9fafb; --surface:#ffffff; --surface-2:#f3f4f6; --border:#e5e7eb;
+  --text:#111827; --muted:#6b7280; --green:#007A3D; --red:#D90429; --blue:#2563eb;
   --shadow: 0 8px 24px rgba(17,24,39,.08);
 }
 *{box-sizing:border-box}
@@ -38,16 +26,13 @@ main{max-width:1100px;margin:18px auto 64px auto;padding:0 16px}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:16px}
 .badge{display:inline-flex;align-items:center;gap:6px;font-weight:700;background:#e8f5eb;border:1px solid #c1e5cd;color:var(--green);padding:4px 10px;border-radius:999px}
 .controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-.btn{appearance:none;border:none;cursor:pointer;font-weight:700;border-radius:12px;padding:14px 16px;background:#ffffff;border:2px solid var(--border);color:#1f2937;min-height:48px;transition:transform .05s ease, box-shadow .15s ease}
-.btn:active{transform:translateY(1px)}
-.btn.primary{background:linear-gradient(180deg,#b7f0c8,#7ae582);border:none;color:#063d1a}
+.btn{appearance:none;border:none;cursor:pointer;font-weight:700;border-radius:12px;padding:14px 16px;background:#ffffff;border:2px solid var(--border);color:#1f2937;min-height:48px}
 .btn.green{background:linear-gradient(180deg,#84fab0,#3bd47a);border:none;color:#05351f}
 .btn.red{background:linear-gradient(180deg,#ffb3b3,var(--red));border:none;color:#5b0b0b}
-.btn.ghost{background:#ffffff;border:2px solid var(--border)}
 .progress{height:12px;background:#e5e7eb;border:1px solid #e5e7eb;border-radius:999px;overflow:hidden;margin-top:10px}
 .progress > div{height:100%;background:linear-gradient(90deg,#8ce9af,var(--green));width:0%}
 .lesson-list{display:grid;gap:8px}
-.lesson-item{display:flex;align-items:center;justify-content:space-between;padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--surface)}
+.lesson-item{display:flex;align-items:center;justify-content:space-between;padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--surface);cursor:pointer}
 .lesson-item .meta{display:flex;gap:10px;align-items:center}
 .tag{font-size:12px;padding:4px 8px;border:1px solid #cdebd7;border-radius:999px;color:var(--green);background:#e8f5eb}
 .kv{display:grid;grid-template-columns: 1fr auto;align-items:center;gap:8px;padding:10px;border-radius:12px;border:1px solid var(--border);background:var(--surface-2)}
@@ -70,15 +55,11 @@ hr{border:none;border-top:1px solid var(--border);margin:8px 0}
 .answer-token{padding:10px 12px;border-radius:12px;border:2px solid var(--border);background:#e7f6ee}
 footer{max-width:1100px;margin:30px auto;padding:0 16px;color:var(--muted);text-align:center}
 .hide{display:none !important}
-
-/* IMMERSIVE MODE (full-screen lesson) */
 body.immersive header{position:static; border-bottom:none}
 body.immersive .grid{grid-template-columns: 1fr}
 body.immersive #picker{display:none}
 body.immersive #intro{display:none}
 body.immersive #quiz-area{min-height: calc(100vh - 120px)}
-
-/* POPUP feedback */
 #overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;padding:16px;z-index:50}
 .modal{max-width:560px;background:#fff;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.2);padding:20px;border:3px solid var(--border);text-align:center}
 .modal h2{margin:0 0 8px 0;font-size:28px}
@@ -87,18 +68,11 @@ body.immersive #quiz-area{min-height: calc(100vh - 120px)}
 .modal .explain{color:#374151;margin-top:8px;text-align:left}
 .modal .wordbyword{background:#f3f4f6;border:1px solid #e5e7eb;border-radius:12px;padding:10px;margin-top:8px;text-align:left}
 .modal .actions{margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-
-/* INTRO panel */
 #intro{display:none}
 .intro-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:16px;margin-bottom:16px}
 .intro-grid{display:grid;gap:10px}
 .intro-grid .kv{background:#fff}
-
-/* Better mobile layout */
-@media (max-width: 919px){
-  .btn, .option{width:100%}
-  .lesson-item{padding:12px}
-}
+@media (max-width: 919px){ .btn, .option{width:100%} .lesson-item{padding:12px} }
   </style>
 </head>
 <body>
@@ -107,13 +81,12 @@ body.immersive #quiz-area{min-height: calc(100vh - 120px)}
       <div class="logo">EU</div>
       <div class="title">
         <h1>Euskara · Ikasi</h1>
-        <small>10 leçons • Basque batua • mode immersif</small>
+        <small>10 leçons • 30 questions/ leçon • Basque batua</small>
       </div>
     </div>
   </header>
 
   <main class="container grid">
-    <!-- LEFT: Lesson picker + vocab -->
     <div class="card" id="picker">
       <div class="section-title">
         <span class="badge">Parcours Débutant</span>
@@ -132,7 +105,6 @@ body.immersive #quiz-area{min-height: calc(100vh - 120px)}
       </div>
     </div>
 
-    <!-- RIGHT: Intro + Quiz -->
     <div id="intro">
       <div class="intro-card">
         <span class="badge" id="lesson-badge">Leçon</span>
@@ -160,12 +132,11 @@ body.immersive #quiz-area{min-height: calc(100vh - 120px)}
         <div class="prompt" id="q-prompt"></div>
 
         <div class="options" id="q-options"></div>
-        <!-- WORD BANK MODE -->
         <div id="bank-wrap" class="hide">
           <div class="answer-strip" id="answer-strip" aria-label="Réponse"></div>
           <div class="wordbank" id="wordbank"></div>
           <div class="controls">
-            <button class="btn ghost" id="bank-undo">Effacer le dernier</button>
+            <button class="btn" id="bank-undo">Effacer le dernier</button>
             <button class="btn red" id="bank-clear">Tout effacer</button>
           </div>
         </div>
@@ -191,18 +162,13 @@ body.immersive #quiz-area{min-height: calc(100vh - 120px)}
     </div>
   </div>
 
-  <footer>v8 • UI claire • pop‑up pédagogiques • banques de mots • progression n/30 • erreurs reposées jusqu’à réussite.</footer>
+  <footer>v9 • 10 leçons • 30 items fixes • banques de mots • pop‑ups • erreurs reposées jusqu’à réussite • blocage jusqu’à la fin.</footer>
 
-  <script>
-/* =================== DATA (BASQUE BATUA) =================== */
-/* Chaque leçon a: id,title,tag,intro,vocab[],grammar[], baseQuestions[] */
-/* On génère ensuite ~30 items / leçon (mix MCQ & WordBank) */
-const LESSONS_BASE = [
-  {
-    id:"l1",
-    title:"Agurrak · Salutations",
-    tag:"Bases",
-    intro:"Saluer et prendre congé. Formules en basque batua: Kaixo, Egun on, Arratsalde on, Gabon, Agur.",
+<script>
+/* ---------- BASE DATA (10 leçons) ---------- */
+const BASE = [
+  { id:"l1", title:"Agurrak · Salutations", tag:"Bases",
+    intro:"Saluer et prendre congé en batua.",
     vocab:[
       {eu:"Kaixo", fr:"Bonjour / Salut"},
       {eu:"Egun on", fr:"Bonjour (matin)"},
@@ -210,24 +176,15 @@ const LESSONS_BASE = [
       {eu:"Gabon", fr:"Bonsoir / Bonne nuit"},
       {eu:"Agur", fr:"Au revoir"}
     ],
-    grammar:[
-      "Saluer le matin: «Egun on».",
-      "Formule générale: «Kaixo».",
-      "Le soir/nuit: «Gabon».",
-      "Prendre congé: «Agur».",
-    ],
-    baseQuestions:[
-      {type:"mcq", prompt:"« Bonjour (matin) » en euskara batua ?", options:["Egun on","Kaixo","Gabon","Arratsalde on"], answer:"Egun on", explain:"«Egun on» s’emploie le matin."},
-      {type:"mcq", prompt:"« Agur » signifie…", options:["Merci","Au revoir","S'il te plaît","À demain"], answer:"Au revoir", explain:"Formule standard pour dire au revoir."},
-      {type:"mcq", prompt:"« Gabon » = ", options:["Bonsoir/Bonne nuit","Bonjour","Bon après-midi","Salut"], answer:"Bonsoir/Bonne nuit", explain:"Employé le soir et la nuit."},
-      {type:"bank", prompt:"Compose « Bon après‑midi »", acceptable:["arratsalde on","arratsaldeon"], bank:["arratsalde","on","kaixo","egun","gabon"], explain:"Les deux orthographes existent."},
+    grammar:["«Kaixo» général; «Egun on» matin; «Gabon» soir; «Agur» au revoir."],
+    base:[
+      {t:"mcq", p:"« Bonjour (matin) » ?", opts:["Egun on","Kaixo","Gabon","Arratsalde on"], a:"Egun on", ex:"«Egun on» = bonjour le matin."},
+      {t:"mcq", p:"« Agur » = ", opts:["Merci","Au revoir","S'il te plaît","À demain"], a:"Au revoir", ex:"Formule standard pour dire au revoir."},
+      {t:"bank", p:"Compose « Bon après‑midi »", acc:["arratsalde on","arratsaldeon"], bank:["arratsalde","on","kaixo","egun","gabon"], ex:"Deux orthographes."}
     ]
   },
-  {
-    id:"l2",
-    title:"Adeitasuna · Politesse",
-    tag:"Bases",
-    intro:"Dire merci/s’il vous plaît, s’excuser, demander de l’aide, gérer l’incompréhension.",
+  { id:"l2", title:"Adeitasuna · Politesse", tag:"Bases",
+    intro:"Merci, s’il vous plaît, s’excuser, demander de l’aide.",
     vocab:[
       {eu:"Eskerrik asko", fr:"Merci beaucoup"},
       {eu:"Mesedez", fr:"S'il vous plaît"},
@@ -235,24 +192,17 @@ const LESSONS_BASE = [
       {eu:"Ez dut ulertzen", fr:"Je ne comprends pas"},
       {eu:"Lagundu nazakezu?", fr:"Pouvez‑vous m'aider ?"}
     ],
-    grammar:[
-      "«Eskerrik asko» = merci (beaucoup).",
-      "«Mesedez» pour une demande polie.",
-      "«Barkatu» pour s’excuser / interpeller poliment.",
-      "Exprimer l’incompréhension: «Ez dut ulertzen».",
-    ],
-    baseQuestions:[
-      {type:"mcq", prompt:"« S'il vous plaît » en basque ?", options:["Mesedez","Eskerrik asko","Barkatu","Agur"], answer:"Mesedez", explain:"«Mesedez» accompagne la demande."},
-      {type:"mcq", prompt:"Traduction de « Ez dut ulertzen »", options:["Je ne comprends pas","Je comprends","Parlez plus fort","Où sont les toilettes ?"], answer:"Je ne comprends pas", explain:"Forme standard batua."},
-      {type:"bank", prompt:"Compose « Merci beaucoup »", acceptable:["eskerrik asko"], bank:["eskerrik","asko","mesedez","barkatu"], explain:"Litt. «des mercis»."},
-      {type:"mcq", prompt:"« Lagundu nazakezu? »", options:["Pouvez‑vous m'aider ?","Où allez‑vous ?","Avez-vous faim ?","À bientôt ?"], answer:"Pouvez‑vous m'aider ?", explain:"Demander de l’aide poliment."}
+    grammar:["«Eskerrik asko», «Mesedez», «Barkatu», «Ez dut ulertzen».",
+             "Demander de l’aide: «Lagundu nazakezu?»"],
+    base:[
+      {t:"mcq", p:"« S'il vous plaît » ?", opts:["Mesedez","Eskerrik asko","Barkatu","Agur"], a:"Mesedez", ex:"Pour une demande polie."},
+      {t:"mcq", p:"« Ez dut ulertzen »", opts:["Je ne comprends pas","Je comprends","Parlez plus fort","Où sont les toilettes ?"], a:"Je ne comprends pas", ex:"Forme standard."},
+      {t:"bank", p:"Compose « Merci beaucoup »", acc:["eskerrik asko"], bank:["eskerrik","asko","mesedez","barkatu"], ex:"Litt. «des mercis»."},
+      {t:"mcq", p:"« Lagundu nazakezu? »", opts:["Pouvez‑vous m'aider ?","Où allez‑vous ?","Avez-vous faim ?","À bientôt ?"], a:"Pouvez‑vous m'aider ?", ex:"Demande polie d’aide."}
     ]
   },
-  {
-    id:"l3",
-    title:"Aurkezpena · Se présenter",
-    tag:"Conversation",
-    intro:"Se présenter, demander où l’on habite, demander comment ça va.",
+  { id:"l3", title:"Aurkezpena · Se présenter", tag:"Conversation",
+    intro:"Se présenter; demander où l’on habite; demander comment ça va.",
     vocab:[
       {eu:"Nire izena … da", fr:"Je m'appelle …"},
       {eu:"Ni Manu naiz", fr:"Je suis Manu"},
@@ -260,23 +210,16 @@ const LESSONS_BASE = [
       {eu:"Ni Donostian bizi naiz", fr:"J'habite à Saint‑Sébastien"},
       {eu:"Zer moduz?", fr:"Comment ça va ?"}
     ],
-    grammar:[
-      "Présentation: «Nire izena X da».",
-      "Identité (izan): «ni … naiz / zu zara / hura da».",
-      "Lieu de résidence: «bizi izan»: «Donostian bizi naiz».",
-      "Demander l’état: «Zer moduz?»",
-    ],
-    baseQuestions:[
-      {type:"mcq", prompt:"« Je m'appelle Ainhoa »", options:["Nire izena Ainhoa da","Ainhoa naiz nire izena","Nire izena da Ainhoa","Ni Ainhoa zara"], answer:"Nire izena Ainhoa da", explain:"Structure: Nire izena X da."},
-      {type:"mcq", prompt:"« Où habites‑tu ? »", options:["Non bizi zara?","Nor zara?","Non zaude?","Non bizi naiz?"], answer:"Non bizi zara?", explain:"«Non …?» = Où ?"},
-      {type:"bank", prompt:"Compose « Je suis Manu »", acceptable:["ni manu naiz"], bank:["ni","Manu","naiz","nago","zara","da"], explain:"Avec «izan» (identité)."},
-      {type:"bank", prompt:"Compose « J'habite à Donostia »", acceptable:["ni donostian bizi naiz"], bank:["ni","Donostian","bizi","naiz","Zer","moduz"], explain:"Locatif «-n»: Donostia-n."}
+    grammar:["Présentation «Nire izena X da». Identité (izan): «ni ... naiz».",
+             "«Non bizi zara?» = Où habites-tu ?"],
+    base:[
+      {t:"mcq", p:"« Je m'appelle Ainhoa »", opts:["Nire izena Ainhoa da","Ainhoa naiz nire izena","Nire izena da Ainhoa","Ni Ainhoa zara"], a:"Nire izena Ainhoa da", ex:"Structure: Nire izena X da."},
+      {t:"mcq", p:"« Où habites‑tu ? »", opts:["Non bizi zara?","Nor zara?","Non zaude?","Non bizi naiz?"], a:"Non bizi zara?", ex:"«Non …?» = Où ?"},
+      {t:"bank", p:"Compose « Je suis Manu »", acc:["ni manu naiz"], bank:["ni","Manu","naiz","nago","zara","da"], ex:"Avec «izan» (identité)."},
+      {t:"bank", p:"Compose « J'habite à Donostia »", acc:["ni donostian bizi naiz"], bank:["ni","Donostian","bizi","naiz","Zer","moduz"], ex:"Locatif «-n»: Donostia-n."}
     ]
   },
-  {
-    id:"l4",
-    title:"Behar oinarrizkoak · Besoins",
-    tag:"Survie",
+  { id:"l4", title:"Behar oinarrizkoak · Besoins", tag:"Survie",
     intro:"Commander, demander des lieux, exprimer un besoin.",
     vocab:[
       {eu:"Ura nahi dut", fr:"Je veux de l'eau"},
@@ -284,47 +227,36 @@ const LESSONS_BASE = [
       {eu:"Non dago komuna?", fr:"Où sont les toilettes ?"},
       {eu:"Zenbat da?", fr:"C'est combien ?"}
     ],
-    grammar:[
-      "Exprimer le désir: «nahi dut» = je veux.",
-      "Commander: «X bat, mesedez».",
-      "Demander un lieu: «Non dago …?»",
-      "Demander le prix: «Zenbat da?»",
-    ],
-    baseQuestions:[
-      {type:"mcq", prompt:"Traduction de « Non dago komuna? »", options:["Où sont les toilettes ?","Où est la gare ?","Où est l'hôtel ?","Où est la plage ?"], answer:"Où sont les toilettes ?", explain:"«Komuna» = toilettes."},
-      {type:"bank", prompt:"Compose « Je veux de l’eau »", acceptable:["ura nahi dut"], bank:["ura","nahi","dut","kafe","bat","mesedez"], explain:"«ura» (l’eau)."},
-      {type:"mcq", prompt:"« C'est combien ? »", options:["Zenbat da?","Zenbat gara?","Zenbat dugu?","Zenbat dena?"], answer:"Zenbat da?", explain:"Formule fixe."},
-      {type:"bank", prompt:"Compose « Un café, s’il vous plaît »", acceptable:["kafe bat, mesedez","kafe bat mesedez"], bank:["kafe","bat,","mesedez","bat","egun","on"], explain:"«bat» = un/une."}
+    grammar:["Exprimer le désir «nahi dut». Commander «X bat, mesedez».",
+             "Localiser «Non dago …?»"],
+    base:[
+      {t:"mcq", p:"Traduction de « Non dago komuna? »", opts:["Où sont les toilettes ?","Où est la gare ?","Où est l'hôtel ?","Où est la plage ?"], a:"Où sont les toilettes ?", ex:"«Komuna» = toilettes."},
+      {t:"bank", p:"Compose « Je veux de l’eau »", acc:["ura nahi dut"], bank:["ura","nahi","dut","kafe","bat","mesedez"], ex:"«ura» = l’eau."},
+      {t:"mcq", p:"« C'est combien ? »", opts:["Zenbat da?","Zenbat gara?","Zenbat dugu?","Zenbat dena?"], a:"Zenbat da?", ex:"Formule fixe."},
+      {t:"bank", p:"Compose « Un café, s’il vous plaît »", acc:["kafe bat, mesedez","kafe bat mesedez"], bank:["kafe","bat,","mesedez","bat","egun","on"], ex:"«bat» = un/une."}
     ]
   },
-  {
-    id:"l5",
-    title:"Zenbakiak eta egunak · Nombres & jours",
-    tag:"Bases",
-    intro:"Compter et nommer les jours en batua.",
+  { id:"l5", title:"Zenbakiak eta egunak · Nombres & jours", tag:"Bases",
+    intro:"Compter et jours en batua.",
     vocab:[
       {eu:"bat, bi, hiru, lau, bost", fr:"1, 2, 3, 4, 5"},
       {eu:"sei, zazpi, zortzi, bederatzi, hamar", fr:"6, 7, 8, 9, 10"},
-      {eu:"astelehena / asteartea / asteazkena", fr:"lundi / mardi / mercredi"},
+      {eu:"astelehena", fr:"lundi"},
+      {eu:"asteartea", fr:"mardi"},
+      {eu:"asteazkena", fr:"mercredi"},
       {eu:"osteguna / ostirala", fr:"jeudi / vendredi"},
       {eu:"larunbata / igandea", fr:"samedi / dimanche"}
     ],
-    grammar:[
-      "Compter 1–10: bat, bi, hiru, lau, bost, sei, zazpi, zortzi, bederatzi, hamar.",
-      "Jours: astel(e)hena, asteartea, asteazkena, osteguna, ostirala, larunbata, igandea.",
-    ],
-    baseQuestions:[
-      {type:"mcq", prompt:"« 7 » en basque", options:["zazpi","zortzi","sei","bederatzi"], answer:"zazpi"},
-      {type:"mcq", prompt:"« osteguna »", options:["jeudi","vendredi","samedi","dimanche"], answer:"jeudi"},
-      {type:"bank", prompt:"Compose « trois »", acceptable:["hiru"], bank:["bat","bi","hiru","lau","bost"], explain:"1 bat, 2 bi, 3 hiru."},
-      {type:"mcq", prompt:"« asteazkena »", options:["mercredi","mardi","jeudi","samedi"], answer:"mercredi"}
+    grammar:["Compter 1–10. Jours de la semaine (batua)."],
+    base:[
+      {t:"mcq", p:"« 7 » en basque", opts:["zazpi","zortzi","sei","bederatzi"], a:"zazpi"},
+      {t:"mcq", p:"« osteguna »", opts:["jeudi","vendredi","samedi","dimanche"], a:"jeudi"},
+      {t:"bank", p:"Compose « trois »", acc:["hiru"], bank:["bat","bi","hiru","lau","bost"], ex:"1 bat, 2 bi, 3 hiru."},
+      {t:"mcq", p:"« asteazkena »", opts:["mercredi","mardi","jeudi","samedi"], a:"mercredi"}
     ]
   },
-  {
-    id:"l6",
-    title:"Familia · Famille",
-    tag:"Vie",
-    intro:"La famille proche (terminologie batua).",
+  { id:"l6", title:"Familia · Famille", tag:"Vie",
+    intro:"Famille proche (batua).",
     vocab:[
       {eu:"ama", fr:"mère"},
       {eu:"aita", fr:"père"},
@@ -332,22 +264,16 @@ const LESSONS_BASE = [
       {eu:"anai / arreba", fr:"frère / sœur (parlant = homme)"},
       {eu:"neba / ahizpa", fr:"frère / sœur (parlant = femme)"}
     ],
-    grammar:[
-      "Différences de «frère/sœur» selon le sexe du locuteur:",
-      "Locuteur homme: anai/arreba; locutrice femme: neba/ahizpa.",
-    ],
-    baseQuestions:[
-      {type:"mcq", prompt:"« ama »", options:["mère","père","tante","grand‑mère"], answer:"mère"},
-      {type:"mcq", prompt:"« alaba »", options:["fille","fils","soeur","mère"], answer:"fille"},
-      {type:"bank", prompt:"Compose « père »", acceptable:["aita"], bank:["aita","ama","anai","arreba"]},
-      {type:"mcq", prompt:"Paire correcte (locuteur homme)", options:["anai/arreba","neba/ahizpa","neba/arreba","anai/ahizpa"], answer:"anai/arreba"}
+    grammar:["Locuteur homme: anai/arreba; locutrice femme: neba/ahizpa."],
+    base:[
+      {t:"mcq", p:"« ama »", opts:["mère","père","tante","grand‑mère"], a:"mère"},
+      {t:"mcq", p:"« alaba »", opts:["fille","fils","soeur","mère"], a:"fille"},
+      {t:"bank", p:"Compose « père »", acc:["aita"], bank:["aita","ama","anai","arreba"]},
+      {t:"bank", p:"Compose « fils »", acc:["semea"], bank:["semea","alaba","aita"]}
     ]
   },
-  {
-    id:"l7",
-    title:"Jatea eta edatea · Manger/boire",
-    tag:"Vie",
-    intro:"Nourriture et boissons très courantes.",
+  { id:"l7", title:"Jatea eta edatea · Manger/boire", tag:"Vie",
+    intro:"Nourriture et boissons courantes.",
     vocab:[
       {eu:"ogi", fr:"pain"},
       {eu:"gazta", fr:"fromage"},
@@ -355,21 +281,16 @@ const LESSONS_BASE = [
       {eu:"barazkiak / fruta", fr:"légumes / fruits"},
       {eu:"ura / ardoa / garagardoa", fr:"eau / vin / bière"}
     ],
-    grammar:[
-      "Lexique de base pour commander et parler des repas.",
-    ],
-    baseQuestions:[
-      {type:"mcq", prompt:"« ogi »", options:["pain","lait","fromage","riz"], answer:"pain"},
-      {type:"bank", prompt:"Compose « fromage »", acceptable:["gazta"], bank:["gazta","ogi","ardoa"]},
-      {type:"mcq", prompt:"« ardoa »", options:["vin","eau","bière","jus"], answer:"vin"},
-      {type:"bank", prompt:"Compose « eau »", acceptable:["ura"], bank:["ura","garagardoa","ogi"]}
+    grammar:["Lexique de base pour commander et parler des repas."],
+    base:[
+      {t:"mcq", p:"« ogi »", opts:["pain","lait","fromage","riz"], a:"pain"},
+      {t:"bank", p:"Compose « fromage »", acc:["gazta"], bank:["gazta","ogi","ardoa"]},
+      {t:"mcq", p:"« ardoa »", opts:["vin","eau","bière","jus"], a:"vin"},
+      {t:"bank", p:"Compose « eau »", acc:["ura"], bank:["ura","garagardoa","ogi"]}
     ]
   },
-  {
-    id:"l8",
-    title:"Tokian toki · Lieux & directions",
-    tag:"Survie",
-    intro:"Se repérer en ville: gauche/droite, tout droit, près/loin.",
+  { id:"l8", title:"Tokian toki · Lieux & directions", tag:"Survie",
+    intro:"Se repérer: gauche/droite, tout droit, près/loin.",
     vocab:[
       {eu:"Non dago …?", fr:"Où est … ?"},
       {eu:"ezker / eskuin", fr:"gauche / droite"},
@@ -377,22 +298,16 @@ const LESSONS_BASE = [
       {eu:"gertu / urrun", fr:"près / loin"},
       {eu:"plaza / kalea / geltokia", fr:"place / rue / gare"}
     ],
-    grammar:[
-      "Indiquer la direction: ezker/eskuin/zuzen.",
-      "Demander un lieu: «Non dago … ?».",
-    ],
-    baseQuestions:[
-      {type:"mcq", prompt:"« ezker »", options:["gauche","droite","loin","près"], answer:"gauche"},
-      {type:"mcq", prompt:"« zuzen »", options:["tout droit","à gauche","lentement","plus tard"], answer:"tout droit"},
-      {type:"bank", prompt:"Compose « Où est la gare ? »", acceptable:["non dago geltokia?","non dago geltokia"], bank:["non","dago","geltokia","?","gertu","plaza"]},
-      {type:"mcq", prompt:"« gertu »", options:["près","loin","haut","bas"], answer:"près"}
+    grammar:["Indiquer la direction; demander un lieu: «Non dago … ?»"],
+    base:[
+      {t:"mcq", p:"« ezker »", opts:["gauche","droite","loin","près"], a:"gauche"},
+      {t:"mcq", p:"« zuzen »", opts:["tout droit","à gauche","lentement","plus tard"], a:"tout droit"},
+      {t:"bank", p:"Compose « Où est la gare ? »", acc:["non dago geltokia?","non dago geltokia"], bank:["non","dago","geltokia","?","gertu","plaza"]},
+      {t:"mcq", p:"« gertu »", opts:["près","loin","haut","bas"], a:"près"}
     ]
   },
-  {
-    id:"l9",
-    title:"Ordua eta egunerokoa · Temps & routine",
-    tag:"Vie",
-    intro:"Moments de la journée, aujourd’hui/demain/hier, routine.",
+  { id:"l9", title:"Ordua eta egunerokoa · Temps & routine", tag:"Vie",
+    intro:"Moments de la journée et routine.",
     vocab:[
       {eu:"Noiz?", fr:"Quand ?"},
       {eu:"Gaur / bihar / atzo", fr:"aujourd'hui / demain / hier"},
@@ -400,21 +315,15 @@ const LESSONS_BASE = [
       {eu:"Goizeko bederatzietan", fr:"À neuf heures du matin"},
       {eu:"Astelehenetan lana dut", fr:"Le lundi, j'ai du travail"}
     ],
-    grammar:[
-      "Moments: goizean (matin), arratsaldean (après‑midi), gauean (soir).",
-      "Heure: «Goizeko bederatzietan» (à 9h du matin).",
-    ],
-    baseQuestions:[
-      {type:"mcq", prompt:"« bihar »", options:["demain","hier","aujourd'hui","tout de suite"], answer:"demain"},
-      {type:"mcq", prompt:"« Noiz? »", options:["Quand ?","Où ?","Qui ?","Combien ?"], answer:"Quand ?"},
-      {type:"bank", prompt:"Compose « aujourd'hui »", acceptable:["gaur"], bank:["gaur","bihar","atzo"]},
-      {type:"bank", prompt:"Compose « À neuf heures du matin »", acceptable:["goizeko bederatzietan"], bank:["goizeko","bederatzietan","gauean","arratsaldean"]}
+    grammar:["Heures: «Goizeko bederatzietan» (à 9h du matin)."],
+    base:[
+      {t:"mcq", p:"« bihar »", opts:["demain","hier","aujourd'hui","tout de suite"], a:"demain"},
+      {t:"mcq", p:"« Noiz? »", opts:["Quand ?","Où ?","Qui ?","Combien ?"], a:"Quand ?"},
+      {t:"bank", p:"Compose « aujourd'hui »", acc:["gaur"], bank:["gaur","bihar","atzo"]},
+      {t:"bank", p:"Compose « À neuf heures du matin »", acc:["goizeko bederatzietan"], bank:["goizeko","bederatzietan","gauean","arratsaldean"]}
     ]
   },
-  {
-    id:"l10",
-    title:"Aditzak oinarri · Verbes de base",
-    tag:"Grammaire",
+  { id:"l10", title:"Aditzak oinarri · Verbes de base", tag:"Grammaire",
     intro:"Être (izan/egon), avoir (eduki), aller (joan), venir (etorri).",
     vocab:[
       {eu:"izan (être, ident.)", fr:"ni naiz / zu zara / hura da"},
@@ -423,393 +332,291 @@ const LESSONS_BASE = [
       {eu:"joan (aller)", fr:"noa / zoaz / doa"},
       {eu:"etorri (venir)", fr:"nator / zatoz / dator"}
     ],
-    grammar:[
-      "izAN (identité) vs egON (état/lieu): «naiz» vs «nago».",
-      "eduki: badut (j’ai) / badu (il/elle a).",
-      "joan (aller): noa; etorri (venir): nator.",
-    ],
-    baseQuestions:[
-      {type:"mcq", prompt:"« Je suis » (identité)", options:["ni naiz","ni nago","ni dut","ni noa"], answer:"ni naiz"},
-      {type:"mcq", prompt:"« Il est (se trouve) » → egon", options:["hura dago","hura da","hura doa","hura dator"], answer:"hura dago"},
-      {type:"bank", prompt:"Compose « Je vais » (joan)", acceptable:["noa"], bank:["noa","nator","naiz"]},
-      {type:"bank", prompt:"Compose « Je viens » (etorri)", acceptable:["nator"], bank:["nator","noa","nago"]}
+    grammar:["izan (identité) vs egon (état/lieu). eduki: «badu» (il/elle a)."],
+    base:[
+      {t:"mcq", p:"« Je suis » (identité)", opts:["ni naiz","ni nago","ni dut","ni noa"], a:"ni naiz"},
+      {t:"mcq", p:"« Il est (se trouve) » → egon", opts:["hura dago","hura da","hura doa","hura dator"], a:"hura dago"},
+      {t:"bank", p:"Compose « Je vais » (joan)", acc:["noa"], bank:["noa","nator","naiz"]},
+      {t:"bank", p:"Compose « Je viens » (etorri)", acc:["nator"], bank:["nator","noa","nago"]}
     ]
   }
 ];
 
-/* ========== UTIL: normalize, shuffle ========== */
+/* ---------- Utils ---------- */
 function norm(s){ return (s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g," ").trim() }
 function shuffle(arr){ return arr.map(x=>[Math.random(),x]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]); }
 
-/* ========== BUILD ~30 QUESTIONS PER LESSON ========== */
-function expandLesson(base){
-  const L = JSON.parse(JSON.stringify(base));
-  let qs = L.baseQuestions.slice();
-
-  // Auto-génération depuis le vocabulaire
-  base.vocab.forEach(row => {
-    // EU -> FR
-    const correctFR = row.fr;
-    const candFR = base.vocab.map(v=>v.fr).filter(v=>v!==correctFR);
-    const distractFR = shuffle(candFR).slice(0, Math.min(3, candFR.length));
-    const o1 = shuffle([correctFR, ...distractFR]);
-    qs.push({type:"mcq", prompt:`Traduction de « ${row.eu} »`, options:o1, answer:correctFR, explain:`«${row.eu}» → ${correctFR}`});
-
-    // FR -> EU
-    const correctEU = row.eu;
-    const parts = correctEU.split(" ");
-    if (parts.length>1){
-      const bank = Array.from(new Set(parts.concat(["kaixo","egun","on","mesedez","?","bat","eta"])));
-      qs.push({type:"bank", prompt:`Compose « ${row.fr} »`, acceptable:[correctEU.toLowerCase()], bank: shuffle(bank), explain:`${row.fr} → «${correctEU}»`});
-    } else {
-      const candEU = base.vocab.map(v=>v.eu).filter(v=>v!==correctEU);
-      const distractEU = shuffle(candEU).slice(0, Math.min(3, candEU.length));
-      const o2 = shuffle([correctEU, ...distractEU]);
-      qs.push({type:"mcq", prompt:`Choisis « ${row.fr} »`, options:o2, answer:correctEU, explain:`${row.fr} → «${correctEU}»`});
+/* ---------- Build 30 items from base ---------- */
+function expand(lesson){
+  const L = JSON.parse(JSON.stringify(lesson));
+  let qs = [];
+  // 1) base items first
+  (lesson.base||[]).forEach(b=>{
+    if (b.t==="mcq"){
+      qs.push({type:"mcq", prompt:b.p, options:b.opts, answer:b.a, explain:b.ex||""});
+    } else if (b.t==="bank"){
+      qs.push({type:"bank", prompt:b.p, acceptable:b.acc||[], bank:b.bank||[], explain:b.ex||""});
     }
   });
-
-  // Mélanger et tronquer/étendre à 30
+  // 2) auto from vocab (both directions)
+  (lesson.vocab||[]).forEach(row=>{
+    const correctFR = row.fr, correctEU = row.eu;
+    // EU -> FR
+    const distractFR = shuffle((lesson.vocab||[]).map(v=>v.fr).filter(x=>x!==correctFR)).slice(0,3);
+    qs.push({type:"mcq", prompt:`Traduction de « ${correctEU} »`, options:shuffle([correctFR, ...distractFR]), answer:correctFR, explain:`«${correctEU}» → ${correctFR}`});
+    // FR -> EU
+    const parts = (correctEU||"").split(" ");
+    if (parts.length>1){
+      const pool = Array.from(new Set(parts.concat(["kaixo","egun","on","mesedez","?","bat","eta"])));
+      qs.push({type:"bank", prompt:`Compose « ${correctFR} »`, acceptable:[correctEU.toLowerCase()], bank:shuffle(pool), explain:`${correctFR} → «${correctEU}»`});
+    } else {
+      const distractEU = shuffle((lesson.vocab||[]).map(v=>v.eu).filter(x=>x!==correctEU)).slice(0,3);
+      qs.push({type:"mcq", prompt:`Choisis « ${correctFR} »`, options:shuffle([correctEU, ...distractEU]), answer:correctEU, explain:`${correctFR} → «${correctEU}»`});
+    }
+  });
+  // 3) pad to exactly 30
   qs = shuffle(qs);
   const target = 30;
-  while (qs.length < target){
-    qs = qs.concat(shuffle(L.baseQuestions));
+  if (qs.length < target){
+    let i = 0;
+    const seed = (lesson.base||[]).length ? lesson.base : qs;
+    while (qs.length < target){
+      const b = seed[i % seed.length];
+      if (b.t==="mcq"){
+        qs.push({type:"mcq", prompt:b.p, options:b.opts, answer:b.a, explain:b.ex||""});
+      } else if (b.t==="bank"){
+        qs.push({type:"bank", prompt:b.p, acceptable:b.acc||[], bank:b.bank||[], explain:b.ex||""});
+      } else {
+        qs.push(qs[i % qs.length]);
+      }
+      i++;
+    }
+  } else if (qs.length > target){
+    qs = qs.slice(0, target);
   }
-  L.questions = qs.slice(0, target);
+  L.questions = qs;
   return L;
 }
 
-/* ========== SPEECH & AUDIO ========== */
-let audioCtx = null;
-function beepOK(){
-  if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
-  const o = audioCtx.createOscillator(), g = audioCtx.createGain();
-  o.type="sine"; o.frequency.value = 900;
-  g.gain.setValueAtTime(0.0001, audioCtx.currentTime);
-  g.gain.exponentialRampToValueAtTime(0.2, audioCtx.currentTime + 0.01);
-  g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.15);
-  o.connect(g).connect(audioCtx.destination); o.start(); o.stop(audioCtx.currentTime + 0.16);
-}
-function beepNO(){
-  if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
-  const o = audioCtx.createOscillator(), g = audioCtx.createGain();
-  o.type="square"; o.frequency.value = 220;
-  g.gain.setValueAtTime(0.0001, audioCtx.currentTime);
-  g.gain.exponentialRampToValueAtTime(0.2, audioCtx.currentTime + 0.01);
-  g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.25);
-  o.connect(g).connect(audioCtx.destination); o.start(); o.stop(audioCtx.currentTime + 0.26);
-}
+/* ---------- TTS & audio ---------- */
+let audioCtx=null;
+function beepOK(){ try{
+  if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+  const o=audioCtx.createOscillator(), g=audioCtx.createGain();
+  o.type="sine"; o.frequency.value=900;
+  g.gain.setValueAtTime(0.0001,audioCtx.currentTime);
+  g.gain.exponentialRampToValueAtTime(0.2,audioCtx.currentTime+0.01);
+  g.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime+0.15);
+  o.connect(g).connect(audioCtx.destination); o.start(); o.stop(audioCtx.currentTime+0.16);
+}catch(e){}}
+function beepNO(){ try{
+  if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+  const o=audioCtx.createOscillator(), g=audioCtx.createGain();
+  o.type="square"; o.frequency.value=220;
+  g.gain.setValueAtTime(0.0001,audioCtx.currentTime);
+  g.gain.exponentialRampToValueAtTime(0.2,audioCtx.currentTime+0.01);
+  g.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime+0.25);
+  o.connect(g).connect(audioCtx.destination); o.start(); o.stop(audioCtx.currentTime+0.26);
+}catch(e){}}
 function speak(text){
-  if(!("speechSynthesis" in window)) return;
-  const u = new SpeechSynthesisUtterance(text);
-  const voices = speechSynthesis.getVoices();
-  const v = voices.find(v=>/eu|basque/i.test(v.lang)) || voices.find(v=>/es-ES|es/i.test(v.lang));
-  if (v) u.voice = v;
-  u.rate = 0.95;
-  speechSynthesis.speak(u);
+  try{
+    if(!("speechSynthesis" in window)) return;
+    const u=new SpeechSynthesisUtterance(text);
+    const voices=speechSynthesis.getVoices();
+    const v=voices.find(v=>/eu|basque/i.test(v.lang))||voices.find(v=>/es-ES|es/i.test(v.lang));
+    if(v) u.voice=v; u.rate=0.95; speechSynthesis.speak(u);
+  }catch(e){}
 }
 
-/* ========== STATE ========== */
-const App = {
-  lessons: [],
-  currentId: LESSONS_BASE[0].id,
-  queue: [],
-  current: null,
-  answered: false,
-  doneCount: 0,
-  score: 0,
-};
+/* ---------- State ---------- */
+const App={lessons:[], currentId:null, queue:[], current:null, answered:false, done:0, score:0};
 
-/* ========== STORAGE ========== */
-function saveProgress(lessonId, score, total){
-  localStorage.setItem("eu_progress_"+lessonId, JSON.stringify({score,total,ts:Date.now()}));
-}
-function loadProgress(lessonId){
-  try{ return JSON.parse(localStorage.getItem("eu_progress_"+lessonId)) }catch(e){ return null }
-}
+/* ---------- Storage ---------- */
+function saveProgress(id,score,total){ try{ localStorage.setItem("eu_progress_"+id, JSON.stringify({score,total,ts:Date.now()})); }catch(e){} }
+function loadProgress(id){ try{ return JSON.parse(localStorage.getItem("eu_progress_"+id)); }catch(e){ return null; } }
 
-/* ========== RENDER PICKER & INTRO ========== */
-function $(s,r=document){ return r.querySelector(s) }
+/* ---------- DOM helpers ---------- */
+function $(s,r=document){ return r.querySelector(s); }
+
+/* ---------- Render picker ---------- */
 function renderLessons(){
-  const list = $("#lesson-list"); list.innerHTML="";
-  App.lessons.forEach((l, idx)=>{
-    const saved = loadProgress(l.id);
-    const div = document.createElement("div");
-    div.className = "lesson-item";
-    div.innerHTML = `
-      <div class="meta"><span class="tag">${l.tag}</span><strong>${idx+1}. ${l.title}</strong></div>
-      <div>${saved ? `<small>Score: ${saved.score}/${saved.total}</small>` : `<small class="muted">Nouveau</small>`}</div>`;
-    div.addEventListener("click", ()=> selectLesson(l.id, false/*imm*/));
-    list.appendChild(div);
+  const list=$("#lesson-list"); list.innerHTML="";
+  App.lessons.forEach((l,idx)=>{
+    const saved=loadProgress(l.id);
+    const d=document.createElement("div");
+    d.className="lesson-item";
+    d.innerHTML=`<div class="meta"><span class="tag">${l.tag}</span><strong>${idx+1}. ${l.title}</strong></div>
+                 <div>${saved?`<small>Score: ${saved.score}/${saved.total}</small>`:`<small class="muted">Nouveau</small>`}</div>`;
+    d.addEventListener("click",()=> selectLesson(l.id));
+    list.appendChild(d);
   });
 }
-function renderVocabPreview(){
-  const lesson = App.lessons.find(l=>l.id===App.currentId);
-  const box = $("#vocab-preview"); box.innerHTML="";
-  lesson.vocab.forEach(row=>{
-    const div = document.createElement("div");
-    div.className = "kv";
-    div.innerHTML = `<div class="eu">${row.eu}</div><div class="fr">${row.fr}</div>`;
+
+function selectLesson(id){
+  document.body.classList.remove("immersive");
+  App.currentId=id;
+  const l=App.lessons.find(x=>x.id===id);
+  const idx=App.lessons.findIndex(x=>x.id===id);
+  $("#lesson-badge").textContent="Leçon "+(idx+1);
+  $("#lesson-title").textContent=l.title;
+  const box=$("#vocab-preview"); box.innerHTML="";
+  l.vocab.forEach(v=>{
+    const div=document.createElement("div"); div.className="kv";
+    div.innerHTML=`<div class="eu">${v.eu}</div><div class="fr">${v.fr}</div>`;
     box.appendChild(div);
   });
+  showIntro(l);
 }
 
-function selectLesson(id, immersive=false){
-  App.currentId = id;
-  const idx = App.lessons.findIndex(l=>l.id===id);
-  $("#lesson-badge").textContent = "Leçon " + (idx+1);
-  $("#lesson-title").textContent = App.lessons[idx].title;
-  renderVocabPreview();
-  // show intro page (before immersive quiz)
-  showIntro(idx);
-}
-
-function showIntro(idx){
-  const L = App.lessons[idx];
-  $("#intro-title").textContent = L.title;
-  $("#intro-text").textContent = LESSONS_BASE.find(b=>b.id===L.id).intro || "";
-  const vocab = $("#intro-vocab"); vocab.innerHTML="";
-  L.vocab.forEach(v=>{
-    const d = document.createElement("div"); d.className="kv";
-    d.innerHTML = `<div class="eu">${v.eu}</div><div class="fr">${v.fr}</div>`;
-    vocab.appendChild(d);
-  });
-  const gram = $("#intro-grammar"); gram.innerHTML="";
-  (LESSONS_BASE.find(b=>b.id===L.id).grammar||[]).forEach(g=>{
-    const d = document.createElement("div"); d.className="kv";
-    d.innerHTML = `<div class="eu">⚑</div><div class="fr">${g}</div>`;
-    gram.appendChild(d);
-  });
+function showIntro(l){
+  $("#intro-title").textContent=l.title;
+  const base=BASE.find(b=>b.id===l.id);
+  $("#intro-text").textContent=base?.intro||"";
+  const iv=$("#intro-vocab"); iv.innerHTML="";
+  l.vocab.forEach(v=>{ const d=document.createElement("div"); d.className="kv"; d.innerHTML=`<div class="eu">${v.eu}</div><div class="fr">${v.fr}</div>`; iv.appendChild(d); });
+  const ig=$("#intro-grammar"); ig.innerHTML="";
+  (base?.grammar||[]).forEach(g=>{ const d=document.createElement("div"); d.className="kv"; d.innerHTML=`<div class="eu">⚑</div><div class="fr">${g}</div>`; ig.appendChild(d); });
   $("#intro").style.display="block";
 }
 
-/* ========== QUIZ LOGIC ========== */
-function startImmersive(){
+/* ---------- Start lesson (immersive) ---------- */
+function startLesson(){
+  if(!App.currentId){ App.currentId=App.lessons[0].id; }
+  const L=App.lessons.find(l=>l.id===App.currentId);
   document.body.classList.add("immersive");
   $("#intro").style.display="none";
-  const L = App.lessons.find(l=>l.id===App.currentId);
-  // build queue 30
-  App.queue = shuffle(L.questions.slice());
-  App.current = null;
-  App.answered = false;
-  App.doneCount = 0;
-  App.score = 0;
-  nextFromQueue();
-  updateProgressBar();
+  App.queue=shuffle(L.questions.slice());
+  App.current=null; App.answered=false; App.done=0; App.score=0;
+  nextQ();
+  updateHUD();
 }
 
-function updateProgressBar(){
-  const L = App.lessons.find(l=>l.id===App.currentId);
-  const total = L.questions.length;
-  const pct = Math.round((App.doneCount/total)*100);
-  $("#progress").style.width = pct + "%";
-  $("#counter").textContent = `${Math.min(App.doneCount+1,total)}/${total}`;
-  $("#live-lesson").textContent = "Leçon " + (App.lessons.findIndex(x=>x.id===App.currentId)+1);
+function updateHUD(){
+  const L=App.lessons.find(l=>l.id===App.currentId);
+  const total=L.questions.length;
+  $("#progress").style.width=Math.round((App.done/total)*100)+"%";
+  $("#counter").textContent=`${Math.min(App.done+1,total)}/${total}`;
+  $("#live-lesson").textContent="Leçon "+(App.lessons.findIndex(x=>x.id===App.currentId)+1);
 }
 
-function nextFromQueue(){
-  const L = App.lessons.find(l=>l.id===App.currentId);
-  if (App.queue.length===0){
-    finishLesson(L);
-    return;
-  }
-  App.current = App.queue.shift();
-  App.answered = false;
-  renderQuestion(App.current);
-  updateProgressBar();
-}
+/* ---------- Render question ---------- */
+function nextQ(){
+  const L=App.lessons.find(l=>l.id===App.currentId);
+  if(App.queue.length===0){ return finish(L); }
+  App.current=App.queue.shift();
+  App.answered=false;
+  $("#q-prompt").textContent=App.current.prompt;
+  $("#q-options").innerHTML=""; $("#bank-wrap").classList.add("hide");
+  $("#next").disabled=true;
 
-function renderQuestion(q){
-  $("#q-prompt").textContent = q.prompt;
-  $("#q-options").innerHTML = "";
-  $("#bank-wrap").classList.add("hide");
-  $("#finish").classList.add("hide");
-  $("#next").disabled = true;
-
-  if (q.type === "mcq"){
-    q.options.forEach(op=>{
-      const b = document.createElement("button");
-      b.className = "option";
-      b.textContent = op;
-      b.addEventListener("click", ()=>{
-        if (App.answered) return;
-        const ok = norm(op) === norm(q.answer);
-        if (ok) b.classList.add("correct"); else b.classList.add("wrong");
-        endQuestion(ok, q, op);
-      });
+  if(App.current.type==="mcq"){
+    App.current.options.forEach(op=>{
+      const b=document.createElement("button");
+      b.className="option"; b.textContent=op;
+      b.onclick=()=>{ if(App.answered) return; const ok=norm(op)===norm(App.current.answer); b.classList.add(ok?"correct":"wrong"); end(ok, op); };
       $("#q-options").appendChild(b);
     });
-  } else if (q.type === "bank"){
-    $("#bank-wrap").classList.remove("hide");
-    setupWordBank(q);
-  }
-
-  $("#idk").onclick = ()=>{
-    if (App.answered) return;
-    endQuestion(false, q, null, /*idk*/true);
-  };
-  $("#next").onclick = ()=>{
-    if (!App.answered) return;
-    App.doneCount++;
-    nextFromQueue();
-  };
-}
-
-let bankState = {built:[]};
-function setupWordBank(q){
-  bankState.built = [];
-  const strip = $("#answer-strip"); const wb = $("#wordbank");
-  strip.innerHTML=""; wb.innerHTML="";
-  const pool = shuffle([...(q.bank||[])]);
-  pool.forEach(tok=>{
-    const tile = document.createElement("button");
-    tile.className = "tile";
-    tile.textContent = tok;
-    tile.addEventListener("click", ()=>{
-      if (App.answered) return;
-      bankState.built.push(tok);
-      tile.classList.add("used");
-      renderBankAnswer();
-      checkBank(q);
-    });
-    wb.appendChild(tile);
-  });
-  $("#bank-undo").onclick = ()=>{
-    if (App.answered) return;
-    const last = bankState.built.pop();
-    const tiles = Array.from($("#wordbank").children).reverse();
-    const t = tiles.find(el => el.classList.contains("used") && el.textContent===last);
-    if (t) t.classList.remove("used");
-    renderBankAnswer();
-  };
-  $("#bank-clear").onclick = ()=>{
-    if (App.answered) return;
-    bankState.built = [];
-    Array.from($("#wordbank").children).forEach(el=> el.classList.remove("used"));
-    renderBankAnswer();
-  };
-  function renderBankAnswer(){
-    strip.innerHTML="";
-    bankState.built.forEach(t=>{
-      const s = document.createElement("span");
-      s.className="answer-token";
-      s.textContent = t;
-      strip.appendChild(s);
-    });
-  }
-  function checkBank(q){
-    const user = bankState.built.join(" ").replace(" ,", ",").replace(" ?", "?");
-    const ok = (q.acceptable||[]).some(a => norm(a) === norm(user));
-    if (ok){
-      endQuestion(true, q, user);
-    }
-  }
-}
-
-/* ========== POPUP FEEDBACK + ERROR QUEUE ========== */
-function showPopup(ok, msg, explain, wbw){
-  const overlay = $("#overlay"); const modal = $("#modal");
-  modal.className = "modal " + (ok? "ok":"no");
-  $("#modal-title").textContent = ok ? "✅ Zorionak!" : "❌ Erreur";
-  $("#modal-msg").innerHTML = msg || "";
-  $("#modal-explain").innerHTML = explain || "";
-  $("#modal-wbw").innerHTML = wbw || "";
-  overlay.style.display = "flex";
-  $("#modal-continue").onclick = ()=>{
-    overlay.style.display = "none";
-    $("#next").disabled = false;
-    if (ok){
-      // auto-advance after a bit if desired:
-      setTimeout(()=> { if (!overlay.style.display || overlay.style.display==='none'){ $("#next").click(); } }, 1200);
-    }
-  };
-}
-
-function endQuestion(ok, q, user, idk=false){
-  App.answered = true;
-  if (ok){ App.score++; beepOK(); } else { beepNO(); }
-
-  // prepare explanations
-  let expected = q.type==="bank" ? (q.acceptable ? q.acceptable[0] : "") : q.answer;
-  let msg = "";
-  if (ok){
-    msg = `<strong>Bonne réponse !</strong>`;
-  } else if (idk){
-    msg = `<strong>“Je ne sais pas”</strong> → on révise maintenant.`;
   } else {
-    msg = `<strong>Ta réponse n'est pas correcte.</strong>`;
+    // bank
+    $("#bank-wrap").classList.remove("hide");
+    setupBank(App.current);
   }
-  const extra = q.explain ? `<div style="margin-top:6px">${q.explain}</div>` : "";
-  const wbw = buildWordByWord(expected);
-  showPopup(ok, msg, extra, wbw);
 
-  // if wrong → push back to queue
-  if (!ok){
-    App.queue.push(q);
-  }
+  $("#idk").onclick=()=>{ if(App.answered) return; end(false, null, true); };
+  $("#next").onclick=()=>{ if(!App.answered) return; App.done++; nextQ(); updateHUD(); };
+  updateHUD();
 }
 
-/* mot-à-mot simple: essaye de split par espaces et ponctuation */
-function buildWordByWord(s){
-  if (!s) return "";
-  const parts = s.replace(/\?/g," ?").replace(/,/g," ,").split(/\s+/).filter(Boolean);
-  const list = parts.map(p=>`<code>${p}</code>`).join(" · ");
-  return `<div><strong>Mot à mot :</strong> ${list}</div>`;
+/* ---------- Word bank ---------- */
+let WB={built:[]};
+function setupBank(q){
+  WB.built=[]; $("#answer-strip").innerHTML=""; $("#wordbank").innerHTML="";
+  const pool=(q.bank&&q.bank.length?q.bank:[...(q.acceptable?.[0]?.split(" ")||[])]);
+  shuffle(pool).forEach(tok=>{
+    const t=document.createElement("button"); t.className="tile"; t.textContent=tok;
+    t.onclick=()=>{ if(App.answered) return; WB.built.push(tok); t.classList.add("used"); renderWB(); checkWB(q); };
+    $("#wordbank").appendChild(t);
+  });
+  $("#bank-undo").onclick=()=>{ if(App.answered) return; const last=WB.built.pop(); const tiles=Array.from($("#wordbank").children).reverse(); const t=tiles.find(el=>el.classList.contains("used")&&el.textContent===last); if(t) t.classList.remove("used"); renderWB(); };
+  $("#bank-clear").onclick=()=>{ if(App.answered) return; WB.built=[]; Array.from($("#wordbank").children).forEach(el=>el.classList.remove("used")); renderWB(); };
+  function renderWB(){ const s=$("#answer-strip"); s.innerHTML=""; WB.built.forEach(x=>{ const span=document.createElement("span"); span.className="answer-token"; span.textContent=x; s.appendChild(span); }); }
+  function checkWB(q){ const user=WB.built.join(" ").replace(" ,", ",").replace(" ?", "?"); const ok=(q.acceptable||[]).some(a=>norm(a)===norm(user)); if(ok){ end(true, user); } }
 }
 
-/* ========== FINISH ========== */
-function finishLesson(L){
+/* ---------- Popup & end-of-question ---------- */
+function showPopup(ok, html, explain, expected){
+  const overlay=$("#overlay"); const modal=$("#modal");
+  modal.className="modal "+(ok?"ok":"no");
+  $("#modal-title").textContent=ok?"✅ Zorionak!":"❌ Erreur";
+  $("#modal-msg").innerHTML=html||"";
+  $("#modal-explain").innerHTML=explain||"";
+  const wbw = expected ? `<div><strong>Mot à mot :</strong> ${expected.split(" ").map(w=>`<code>${w}</code>`).join(" · ")}</div>` : "";
+  $("#modal-wbw").innerHTML=wbw;
+  overlay.style.display="flex";
+  $("#modal-continue").onclick=()=>{ overlay.style.display="none"; $("#next").disabled=false; if(ok){ setTimeout(()=>{ if(overlay.style.display==="none"){ $("#next").click(); } }, 1200); } };
+}
+
+function end(ok, user, idk){
+  App.answered=true;
+  const q=App.current;
+  if(ok){ App.score++; beepOK(); } else { beepNO(); App.queue.push(q); }
+
+  const expected=q.type==="bank" ? (q.acceptable?.[0]||"") : q.answer;
+  let msg = ok ? "<strong>Bonne réponse !</strong>" : (idk ? "<strong>Tu as choisi “Je ne sais pas”.</strong>" : "<strong>Ce n'est pas correct.</strong>");
+  const ex = q.explain ? `<div style="margin-top:6px">${q.explain}</div>` : "";
+  showPopup(ok, msg, ex, expected);
+}
+
+/* ---------- Finish lesson ---------- */
+function finish(L){
   saveProgress(L.id, App.score, L.questions.length);
-  // Confettis très simples (emoji)
-  const overlay = $("#overlay"); const modal = $("#modal");
-  modal.className = "modal ok";
-  $("#modal-title").textContent = "🎉 Bravo !";
-  $("#modal-msg").innerHTML = `Leçon terminée.<br><strong>Score: ${App.score}/${L.questions.length}</strong>`;
-  $("#modal-explain").innerHTML = "";
-  $("#modal-wbw").innerHTML = "";
-  const idx = App.lessons.findIndex(x=>x.id===L.id);
-  const hasNext = idx < App.lessons.length-1;
-  const actions = modal.querySelector(".actions"); actions.innerHTML="";
-  if (hasNext){
-    const b1 = document.createElement("button");
-    b1.className = "btn green"; b1.textContent = "Leçon suivante ▶";
-    b1.onclick = ()=>{
-      $("#overlay").style.display="none";
-      App.currentId = App.lessons[idx+1].id;
-      startImmersive(); // enchaîne
-    };
+  const overlay=$("#overlay"); const modal=$("#modal");
+  modal.className="modal ok";
+  $("#modal-title").textContent="🎉 Bravo !";
+  $("#modal-msg").innerHTML=`Leçon terminée.<br><strong>Score: ${App.score}/${L.questions.length}</strong>`;
+  $("#modal-explain").innerHTML=""; $("#modal-wbw").innerHTML="";
+  const actions=modal.querySelector(".actions"); actions.innerHTML="";
+  const idx=App.lessons.findIndex(x=>x.id===L.id);
+  const hasNext=idx < App.lessons.length-1;
+  if(hasNext){
+    const b1=document.createElement("button"); b1.className="btn green"; b1.textContent="Leçon suivante ▶";
+    b1.onclick=()=>{ $("#overlay").style.display="none"; App.currentId=App.lessons[idx+1].id; startLesson(); };
     actions.appendChild(b1);
   }
-  const b2 = document.createElement("button");
-  b2.className = "btn"; b2.textContent = "Retour à la liste";
-  b2.onclick = ()=>{
-    $("#overlay").style.display="none";
-    document.body.classList.remove("immersive");
-  };
+  const b2=document.createElement("button"); b2.className="btn"; b2.textContent="Retour à la liste";
+  b2.onclick=()=>{ $("#overlay").style.display="none"; document.body.classList.remove("immersive"); };
   actions.appendChild(b2);
-  overlay.style.display = "flex";
+  overlay.style.display="flex";
 }
 
-/* ========== INIT ========== */
+/* ---------- Init ---------- */
 window.addEventListener("DOMContentLoaded", ()=>{
-  // Build expanded lessons
-  App.lessons = LESSONS_BASE.map(expandLesson);
-  renderLessons();
-  // default preview
-  selectLesson(App.lessons[0].id, false);
-
-  $("#start").onclick = ()=>{ $("#intro-go").click(); };
-  $("#intro-go").onclick = ()=> startImmersive();
-  $("#tts-all").onclick = ()=>{
-    const L = App.lessons.find(l=>l.id===App.currentId);
-    const list = L.vocab.map(v=>v.eu);
-    let i=0; (function step(){ if (i>=list.length) return; speak(list[i++]); setTimeout(step, 600); })();
-  };
-
   // iOS audio unlock
   window.addEventListener('touchstart', ()=>{ if(audioCtx && audioCtx.state==='suspended') audioCtx.resume(); }, {once:true});
   window.addEventListener('click', ()=>{ if(audioCtx && audioCtx.state==='suspended') audioCtx.resume(); }, {once:true});
+
+  // Expand lessons to 30 items each
+  try{
+    App.lessons = BASE.map(expand);
+  }catch(e){
+    // Fallback: basic structure
+    App.lessons = BASE.map(x=>({id:x.id,title:x.title,tag:x.tag,vocab:x.vocab,questions:(x.base||[]).map(b=>b.t==="mcq"?{type:"mcq",prompt:b.p,options:b.opts,answer:b.a}:{type:"bank",prompt:b.p,acceptable:b.acc,bank:b.bank})}));
+  }
+
+  // Render list and preselect first
+  renderLessons();
+  App.currentId = App.lessons[0].id;
+  selectLesson(App.currentId);
+
+  // Buttons
+  $("#start").onclick=()=>{ startLesson(); };
+  $("#intro-go").onclick=()=>{ startLesson(); };
+  $("#tts-all").onclick=()=>{
+    const L=App.lessons.find(l=>l.id===App.currentId);
+    const list=(L?.vocab||[]).map(v=>v.eu);
+    let i=0; (function step(){ if(i>=list.length) return; speak(list[i++]); setTimeout(step, 600); })();
+  };
 });
-  </script>
+</script>
 </body>
 </html>
