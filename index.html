@@ -1,66 +1,599 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Euskara App – Niveau 1 · Leçon 1</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Euskara · Ikasi · Niveau 1 (10 leçons) — Light</title>
+  <meta name="theme-color" content="#ffffff">
+  <style>
+/* ================= LIGHT THEME, FLAT ================= */
+:root{
+  --bg:#f9fafb;           /* very light background */
+  --surface:#ffffff;      /* cards */
+  --surface-2:#f3f4f6;    /* secondary */
+  --border:#e5e7eb;
+  --text:#111827;         /* near black */
+  --muted:#6b7280;        /* gray-500 */
+  --primary:#3b82f6;      /* blue-500 */
+  --primary-2:#2563eb;    /* blue-600 */
+  --ok:#22c55e;           /* green-500 */
+  --warn:#ef4444;         /* red-500 */
+  --shadow: 0 8px 24px rgba(17,24,39,.08);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;}
+a{color:var(--primary);text-decoration:none}
+header{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.8);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--border)}
+.container{max-width:1000px;margin:0 auto;padding:12px 16px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--primary),#60a5fa);color:white;font-weight:900}
+.title h1{margin:0;font-size:20px;letter-spacing:.2px}
+.title small{color:var(--muted)}
+main{max-width:1000px;margin:18px auto 64px auto;padding:0 16px}
+.grid{display:grid;gap:16px;grid-template-columns: 1fr}
+@media (min-width: 880px){ .grid{grid-template-columns: 360px 1fr} }
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:16px}
+.card h2{margin:6px 0 10px}
+.badge{display:inline-flex;align-items:center;gap:6px;font-weight:700;background:#eff6ff;border:1px solid #dbeafe;color:#1d4ed8;padding:4px 10px;border-radius:999px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.btn{appearance:none;border:none;cursor:pointer;font-weight:700;border-radius:12px;padding:14px 16px;background:#eef2ff;border:1px solid #e5e7eb;color:#1f2937;min-height:48px}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:linear-gradient(180deg,#93c5fd,#60a5fa);color:#0b255a;border:none}
+.btn.ghost{background:#ffffff;border:1px solid var(--border)}
+.btn.ok{background:linear-gradient(180deg,#86efac,#22c55e);color:#063d1a;border:none}
+.btn.warn{background:linear-gradient(180deg,#fca5a5,#ef4444);color:#5b0b0b;border:none}
+.progress{height:12px;background:#e5e7eb;border:1px solid #e5e7eb;border-radius:999px;overflow:hidden;margin-top:10px}
+.progress > div{height:100%;background:linear-gradient(90deg,#60a5fa,#3b82f6);width:0%}
+.kv{display:grid;grid-template-columns: 1fr auto auto;align-items:center;gap:8px;padding:12px;border-radius:12px;border:1px solid var(--border);background:var(--surface-2)}
+.kv .eu{font-weight:800}
+.kv small{color:var(--muted)}
+.kv .speak{background:transparent;border:none;font-size:20px;cursor:pointer;color:#2563eb}
+.section-title{display:flex;align-items:center;gap:10px;margin:8px 0}
+.section-title h3{margin:0}
+.list{display:grid;gap:8px}
+.lesson-list{display:grid;gap:8px}
+.lesson-item{display:flex;align-items:center;justify-content:space-between;padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--surface)}
+.lesson-item .meta{display:flex;gap:10px;align-items:center}
+.tag{font-size:12px;padding:4px 8px;border:1px solid #bfdbfe;border-radius:999px;color:#1d4ed8;background:#eff6ff}
+hr{border:none;border-top:1px solid var(--border);margin:8px 0}
+.q{display:grid;gap:12px}
+.q .prompt{font-weight:800;font-size:18px}
+.options{display:grid;gap:10px}
+.option{padding:14px;text-align:left;border:1px solid var(--border);border-radius:12px;background:#ffffff;color:var(--text);cursor:pointer;min-height:48px}
+.option:disabled{opacity:.6;cursor:not-allowed}
+.feedback{min-height:22px}
+.feedback.ok{color:var(--ok)}
+.feedback.no{color:var(--warn)}
+.explain{color:var(--muted);font-size:14px}
+.input{width:100%;padding:14px;border-radius:12px;border:1px solid var(--border);background:#ffffff;color:var(--text);min-height:48px}
+.wordbank{display:flex;flex-wrap:wrap;gap:8px}
+.tile{padding:10px 12px;border-radius:12px;border:1px solid var(--border);background:#ffffff;cursor:pointer}
+.answer-strip{display:flex;flex-wrap:wrap;gap:8px;min-height:44px;padding:8px;border:1px dashed #d1d5db;border-radius:12px;background:#f8fafc}
+.answer-token{padding:10px 12px;border-radius:12px;border:1px solid var(--border);background:#e5efff}
+footer{max-width:1000px;margin:30px auto;padding:0 16px;color:var(--muted);text-align:center}
+.hide{display:none !important}
+
+/* Better mobile layout */
+@media (max-width: 879px){
+  .controls{gap:12px}
+  .btn, .option{width:100%}
+  .kv{grid-template-columns: 1fr auto}
+}
+  </style>
 </head>
 <body>
   <header>
-    <h1>🇧🇦 Euskara App</h1>
-    <p class="subtitle">Niveau 1 · Leçon 1 : Salutations</p>
+    <div class="container brand">
+      <div class="logo">EU</div>
+      <div class="title">
+        <h1>Euskara · Ikasi</h1>
+        <small>Niveau 1 • 10 leçons • Basque batua</small>
+      </div>
+    </div>
   </header>
 
-  <main id="app" aria-live="polite">
-    <section id="home" class="view active">
-      <h2>Objectif</h2>
-      <p>Apprendre à saluer et à prendre congé en basque (matin, après-midi, soir).</p>
-      <div class="card">
-        <h3>Vocabulaire</h3>
-        <ul id="vocab-list">
-          <!-- Filled by JS -->
-        </ul>
-        <div class="legend">Clique sur 🔊 pour entendre la prononciation (via synthèse vocale).</div>
+  <main class="container grid">
+    <!-- LEFT: Lesson picker + vocab -->
+    <div class="card" id="picker">
+      <div class="section-title">
+        <span class="badge">Parcours Débutant</span>
+        <h3>Choisis une leçon</h3>
       </div>
-      <div class="actions">
-        <button id="start-quiz" class="primary">Commencer les exercices</button>
+      <div class="lesson-list" id="lesson-list"></div>
+      <hr />
+      <div>
+        <h3>Vocabulaire (aperçu)</h3>
+        <div class="list" id="vocab-preview"></div>
+        <div class="controls">
+          <button class="btn" id="tts-all">🔊 Tout écouter</button>
+          <button class="btn primary" id="start">Commencer les exercices</button>
+        </div>
+        <div class="progress" aria-label="Progression leçon"><div id="progress"></div></div>
       </div>
-      <div id="progress" class="progress-wrap" hidden>
-        <div class="progress-bar" id="progress-bar" style="width:0%"></div>
-      </div>
-    </section>
+    </div>
 
-    <section id="quiz" class="view" hidden>
-      <div class="quiz-head">
-        <button id="back-home" class="ghost">⬅ Retour</button>
-        <div class="quiz-status">
-          <span id="q-counter">Question 1/1</span>
-          <span id="score">Score : 0</span>
+    <!-- RIGHT: Quiz -->
+    <div class="card" id="quiz-area">
+      <div class="section-title">
+        <span class="badge" id="lesson-badge">Leçon</span>
+        <h3 id="lesson-title">—</h3>
+      </div>
+      <div class="q">
+        <div class="prompt" id="q-prompt"></div>
+        <div class="options" id="q-options"></div>
+
+        <!-- WORD BANK MODE -->
+        <div id="bank-wrap" class="hide">
+          <div class="answer-strip" id="answer-strip" aria-label="Réponse"></div>
+          <div class="wordbank" id="wordbank"></div>
+          <div class="controls">
+            <button class="btn ghost" id="bank-undo">Effacer le dernier</button>
+            <button class="btn warn" id="bank-clear">Tout effacer</button>
+          </div>
+        </div>
+
+        <div class="feedback" id="feedback"></div>
+        <div class="explain" id="explain"></div>
+        <div class="controls">
+          <button class="btn ghost" id="prev">◀ Précédent</button>
+          <button class="btn primary" id="next" disabled>Suivant ▶</button>
+          <button class="btn ok hide" id="finish">Terminer</button>
         </div>
       </div>
-      <div id="question-area">
-        <!-- Filled by JS -->
-      </div>
-    </section>
-
-    <section id="result" class="view" hidden>
-      <div class="card center">
-        <h2>Résultat</h2>
-        <p id="final-text"></p>
-        <div class="actions">
-          <button id="retry" class="primary">Recommencer</button>
-          <button id="back-home-2" class="ghost">Retour à la leçon</button>
-        </div>
-      </div>
-    </section>
+    </div>
   </main>
 
-  <footer>
-    <small>Prototype MVP · Basque (Euskara). Progression sauvegardée localement.</small>
-  </footer>
+  <footer>Light UI • auto‑avance sur bonne réponse • banque de mots type Duolingo • euskara batua • progression locale.</footer>
 
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+  <script>
+/* =================== DATA: 10 LESSONS (BASQUE BATUA) + explanations =================== */
+const LESSONS = [
+  {
+    id: "l1",
+    title: "Agurrak · Salutations",
+    tag: "Bases",
+    vocab: [
+      {eu:"Kaixo", fr:"Bonjour / Salut"},
+      {eu:"Egun on", fr:"Bonjour (matin)"},
+      {eu:"Arratsalde on", fr:"Bon après-midi"},
+      {eu:"Gabon", fr:"Bonsoir / Bonne nuit"},
+      {eu:"Agur", fr:"Au revoir"}
+    ],
+    questions: [
+      {type:"mcq", prompt:"« Bonjour (matin) » en euskara batua ?", options:["Egun on","Kaixo","Gabon","Arratsalde on"], answer:"Egun on", explain:"«Egun on» s’emploie le matin. «Kaixo» = salut/général."},
+      {type:"mcq", prompt:"Que signifie « Agur » ?", options:["Merci","Au revoir","S'il te plaît","À demain"], answer:"Au revoir", explain:"«Agur» = au revoir."},
+      {type:"mcq", prompt:"Choisis la bonne traduction : « Gabon »", options:["Bonsoir/Bonne nuit","Bonjour","Bon après-midi","Salut"], answer:"Bonsoir/Bonne nuit", explain:"«Gabon» s’utilise le soir/nuit."},
+      {type:"bank", prompt:"Forme générale : « Bonjour / Salut »", acceptable:["kaixo"], bank:["kaixo","egun","on","agur","gabon","arratsalde","on"], explain:"Réponse attendue : Kaixo."},
+      {type:"bank", prompt:"Compose « Bon après‑midi »", acceptable:["arratsalde on","arratsaldeon"], bank:["arratsalde","on","egun","gabon","kaixo","mesedez"], explain:"Deux orthographes: «arratsalde on» ou «arratsaldeon»."}
+    ]
+  },
+  {
+    id: "l2",
+    title: "Adeitasuna · Politesse",
+    tag: "Bases",
+    vocab: [
+      {eu:"Eskerrik asko", fr:"Merci beaucoup"},
+      {eu:"Mesedez", fr:"S'il vous plaît"},
+      {eu:"Barkatu", fr:"Pardon / Excusez‑moi"},
+      {eu:"Ez dut ulertzen", fr:"Je ne comprends pas"},
+      {eu:"Polikiago, mesedez", fr:"Plus lentement, s'il vous plaît"}
+    ],
+    questions:[
+      {type:"mcq", prompt:"« Merci beaucoup » en basque ?", options:["Eskerrik asko","Mila esker","Mesedez","Ondo"], answer:"Eskerrik asko", explain:"«Eskerrik asko» (batua). «Mila esker» = merci (mille mercis)."},
+      {type:"mcq", prompt:"« Mesedez » signifie…", options:["Excusez-moi","S'il vous plaît","Bonjour","Au revoir"], answer:"S'il vous plaît", explain:"Pour formuler une demande polie."},
+      {type:"mcq", prompt:"Traduction de « Ez dut ulertzen »", options:["Je comprends","Je ne comprends pas","Parlez plus fort","Où sont les toilettes ?"], answer:"Je ne comprends pas", explain:"«Ez dut ulertzen» = je ne comprends pas."},
+      {type:"bank", prompt:"Compose « Excusez‑moi »", acceptable:["barkatu"], bank:["barkatu","eskerrik","asko","mesedez","kaixo"], explain:"«Barkatu» sert à s’excuser / demander à passer."},
+      {type:"bank", prompt:"Compose « Plus lentement, s’il vous plaît »", acceptable:["polikiago, mesedez","polikiago mesedez"], bank:["polikiago,","mesedez","polikiago","egun","on","eskerrik","asko"], explain:"«Polikiago» = plus lentement."}
+    ]
+  },
+  {
+    id: "l3",
+    title: "Aurkezpena · Se présenter",
+    tag: "Conversation",
+    vocab: [
+      {eu:"Nire izena … da", fr:"Je m'appelle …"},
+      {eu:"Ni Manu naiz", fr:"Je suis Manu"},
+      {eu:"Non bizi zara?", fr:"Où habites‑tu ?"},
+      {eu:"Ni Donostian bizi naiz", fr:"J'habite à Saint‑Sébastien"},
+      {eu:"Zer moduz?", fr:"Comment ça va ?"},
+      {eu:"Ondo / Oso ondo / Gaizki", fr:"Bien / Très bien / Mal"}
+    ],
+    questions:[
+      {type:"mcq", prompt:"« Je m'appelle Ainhoa »", options:["Nire izena Ainhoa da","Ni Ainhoa zara","Ainhoa naiz nire izena","Nire izena da Ainhoa"], answer:"Nire izena Ainhoa da", explain:"Structure batua: «Nire izena X da»."},
+      {type:"mcq", prompt:"« Où habites‑tu ? »", options:["Non bizi zara?","Non zaude?","Non bizi naiz?","Nor zara?"], answer:"Non bizi zara?", explain:"«Bizi izan» = habiter; «Non…?» = où."},
+      {type:"bank", prompt:"Compose « Je suis Manu »", acceptable:["ni manu naiz"], bank:["ni","Manu","naiz","nago","zara","da"], explain:"Avec «izan» (être identitaire) → «ni … naiz»."},
+      {type:"bank", prompt:"Compose la question « Comment ça va ? »", acceptable:["zer moduz?","zer moduz"], bank:["zer","moduz","?","non","zara","ondo"], explain:"Formule courante, neutre."},
+      {type:"mcq", prompt:"Choisis « J'habite à Donostia »", options:["Ni Donostian bizi naiz","Ni Donostiara noa","Ni Donostian nago","Donostia dut"], answer:"Ni Donostian bizi naiz", explain:"«-n» locatif : Donostia-n + «bizi naiz»."}
+    ]
+  },
+  {
+    id: "l4",
+    title: "Behar oinarrizkoak · Besoins",
+    tag: "Survie",
+    vocab: [
+      {eu:"Ura nahi dut", fr:"Je veux de l'eau"},
+      {eu:"Kafe bat, mesedez", fr:"Un café, s'il vous plaît"},
+      {eu:"Non dago komuna?", fr:"Où sont les toilettes ?"},
+      {eu:"Zenbat da?", fr:"C'est combien ?"},
+      {eu:"Lagundu nazakezu?", fr:"Pouvez‑vous m'aider ?"}
+    ],
+    questions:[
+      {type:"mcq", prompt:"Traduction de « Non dago komuna? »", options:["Où est la gare ?","Où sont les toilettes ?","Où est l'hôtel ?","Où est la plage ?"], answer:"Où sont les toilettes ?", explain:"«Non dago…?» = Où est… ? «Komuna» = toilettes."},
+      {type:"bank", prompt:"Compose « Je veux de l’eau »", acceptable:["ura nahi dut"], bank:["ura","nahi","dut","kafe","bat","mesedez"], explain:"«nahi dut» = je veux; «ura» = l’eau."},
+      {type:"mcq", prompt:"« C'est combien ? »", options:["Zenbat da?","Zenbat gara?","Zenbat dugu?","Zenbat dena?"], answer:"Zenbat da?", explain:"Forme fixe batua pour demander le prix."},
+      {type:"bank", prompt:"Compose « Un café, s'il vous plaît »", acceptable:["kafe bat, mesedez","kafe bat mesedez"], bank:["kafe","bat,","mesedez","bat","egun","on"], explain:"«bat» = un/une."},
+      {type:"mcq", prompt:"« Lagundu nazakezu? » signifie…", options:["Avez‑vous du temps ?","Pouvez‑vous m'aider ?","Où vais‑je ?","Parlez plus doucement"], answer:"Pouvez‑vous m'aider ?", explain:"Forme polie/standard pour demander de l’aide."}
+    ]
+  },
+  {
+    id: "l5",
+    title: "Zenbakiak eta egunak · Nombres & jours",
+    tag: "Bases",
+    vocab: [
+      {eu:"bat, bi, hiru, lau, bost", fr:"1, 2, 3, 4, 5"},
+      {eu:"sei, zazpi, zortzi, bederatzi, hamar", fr:"6, 7, 8, 9, 10"},
+      {eu:"astelehena", fr:"lundi"},
+      {eu:"asteartea", fr:"mardi"},
+      {eu:"asteazkena", fr:"mercredi"},
+      {eu:"osteguna / ostirala", fr:"jeudi / vendredi"},
+      {eu:"larunbata / igandea", fr:"samedi / dimanche"}
+    ],
+    questions:[
+      {type:"mcq", prompt:"Choisis « 7 » en basque", options:["zazpi","zortzi","sei","bederatzi"], answer:"zazpi", explain:"7 = zazpi; 8 = zortzi; 9 = bederatzi."},
+      {type:"mcq", prompt:"« osteguna » = ", options:["jeudi","vendredi","samedi","dimanche"], answer:"jeudi", explain:"«ostirala» = vendredi."},
+      {type:"bank", prompt:"Compose le chiffre « trois »", acceptable:["hiru"], bank:["bat","bi","hiru","lau","bost"], explain:"1 bat, 2 bi, 3 hiru."},
+      {type:"mcq", prompt:"« asteazkena »", options:["mercredi","mardi","jeudi","samedi"], answer:"mercredi", explain:"Litt. «milieu de semaine»."},
+      {type:"bank", prompt:"Compose « dix »", acceptable:["hamar"], bank:["hamar","zazpi","zortzi"], explain:"10 = hamar."}
+    ]
+  },
+  {
+    id: "l6",
+    title: "Familia · Famille",
+    tag: "Vie",
+    vocab: [
+      {eu:"ama", fr:"mère"},
+      {eu:"aita", fr:"père"},
+      {eu:"semea / alaba", fr:"fils / fille"},
+      {eu:"anai / arreba", fr:"frère / sœur (parlant = homme)"},
+      {eu:"neba / ahizpa", fr:"frère / sœur (parlant = femme)"},
+      {eu:"laguna", fr:"ami(e) / partenaire (selon contexte)"}
+    ],
+    questions:[
+      {type:"mcq", prompt:"« ama »", options:["mère","père","tante","grand‑mère"], answer:"mère", explain:"Ama = mère, Aita = père."},
+      {type:"mcq", prompt:"« alaba »", options:["fille","fils","soeur","mère"], answer:"fille", explain:"«semea» = fils."},
+      {type:"bank", prompt:"Compose « père »", acceptable:["aita"], bank:["aita","ama","anai","arreba"], explain:"Aita = père."},
+      {type:"mcq", prompt:"Choisis la paire correcte", options:["anai/arreba","anai/ahizpa","neba/arreba","semea/arreba"], answer:"anai/arreba", explain:"Si locuteur homme : anai/arreba; si femme : neba/ahizpa."},
+      {type:"bank", prompt:"Compose « ami(e) »", acceptable:["laguna"], bank:["laguna","lagunak","lagun"], explain:"Forme basique : laguna."}
+    ]
+  },
+  {
+    id: "l7",
+    title: "Jatea eta edatea · Manger/boire",
+    tag: "Vie",
+    vocab: [
+      {eu:"ogi", fr:"pain"},
+      {eu:"gazta", fr:"fromage"},
+      {eu:"arraina / haragia", fr:"poisson / viande"},
+      {eu:"barazkiak / fruta", fr:"légumes / fruits"},
+      {eu:"ura / ardoa / garagardoa", fr:"eau / vin / bière"}
+    ],
+    questions:[
+      {type:"mcq", prompt:"« ogi »", options:["pain","lait","fromage","riz"], answer:"pain", explain:"Ogi = pain; gazta = fromage."},
+      {type:"bank", prompt:"Compose « fromage »", acceptable:["gazta"], bank:["gazta","ogi","ardoa"], explain:"Forme batua : gazta."},
+      {type:"mcq", prompt:"« ardoa »", options:["vin","eau","bière","jus"], answer:"vin", explain:"Ardoa = vin; garagardoa = bière."},
+      {type:"bank", prompt:"Compose « eau »", acceptable:["ura"], bank:["ura","garagardoa","ogi"], explain:"Ura = l’eau."},
+      {type:"mcq", prompt:"« arraina »", options:["poisson","viande","salade","pomme"], answer:"poisson", explain:"Arraina = poisson; haragia = viande."}
+    ]
+  },
+  {
+    id: "l8",
+    title: "Tokian toki · Lieux & directions",
+    tag: "Survie",
+    vocab: [
+      {eu:"Non dago …?", fr:"Où est … ?"},
+      {eu:"ezker / eskuin", fr:"gauche / droite"},
+      {eu:"zuzen", fr:"tout droit"},
+      {eu:"gertu / urrun", fr:"près / loin"},
+      {eu:"plaza / kalea / geltokia", fr:"place / rue / gare"}
+    ],
+    questions:[
+      {type:"mcq", prompt:"« ezker »", options:["gauche","droite","loin","près"], answer:"gauche", explain:"Eskuina = droite."},
+      {type:"mcq", prompt:"Traduction de « zuzen »", options:["tout droit","à gauche","lentement","plus tard"], answer:"tout droit", explain:"«Zuzen joan» = aller tout droit."},
+      {type:"bank", prompt:"Compose « Où est la gare ? »", acceptable:["non dago geltokia?","non dago geltokia"], bank:["non","dago","geltokia","?","kaixo","gertu"], explain:"«geltokia» = la gare."},
+      {type:"mcq", prompt:"« gertu »", options:["près","loin","haut","bas"], answer:"près", explain:"«urrun» = loin."},
+      {type:"bank", prompt:"Compose « droite »", acceptable:["eskuin"], bank:["eskuin","ezker","zuzen"], explain:"Eskuina = à droite."}
+    ]
+  },
+  {
+    id: "l9",
+    title: "Ordua eta egunerokoa · Temps & routine",
+    tag: "Vie",
+    vocab: [
+      {eu:"Noiz?", fr:"Quand ?"},
+      {eu:"Gaur / bihar / atzo", fr:"aujourd'hui / demain / hier"},
+      {eu:"goizean / arratsaldean / gauean", fr:"le matin / l'après‑midi / le soir"},
+      {eu:"Goizeko bederatzietan", fr:"À neuf heures du matin"},
+      {eu:"Astelehenetan lana dut", fr:"Le lundi, j'ai du travail"}
+    ],
+    questions:[
+      {type:"mcq", prompt:"« bihar »", options:["demain","hier","aujourd'hui","tout de suite"], answer:"demain", explain:"Gaur = aujourd’hui; atzo = hier."},
+      {type:"mcq", prompt:"« Noiz? » = ", options:["Quand ?","Où ?","Qui ?","Combien ?"], answer:"Quand ?", explain:"Question de temps."},
+      {type:"bank", prompt:"Compose « aujourd'hui »", acceptable:["gaur"], bank:["gaur","bihar","atzo"], explain:"Forme batua : gaur."},
+      {type:"mcq", prompt:"« goizean »", options:["le matin","le soir","demain","hier"], answer:"le matin", explain:"«arratsaldean» = l’après‑midi; «gauean» = le soir."},
+      {type:"bank", prompt:"Compose « À neuf heures du matin »", acceptable:["goizeko bederatzietan"], bank:["goizeko","bederatzietan","gauean","arratsaldean"], explain:"Structure temps + locatif «‑tan/‑etan»."}
+    ]
+  },
+  {
+    id: "l10",
+    title: "Aditzak oinarri · Verbes de base",
+    tag: "Grammaire",
+    vocab: [
+      {eu:"izan (être, ident.)", fr:"ni naiz / zu zara / hura da"},
+      {eu:"egon (être, lieu/état)", fr:"ni nago / zu zaude / hura dago"},
+      {eu:"eduki (avoir)", fr:"badut / baduzu / badu"},
+      {eu:"joan (aller)", fr:"noa / zoaz / doa"},
+      {eu:"etorri (venir)", fr:"nator / zatoz / dator"}
+    ],
+    questions:[
+      {type:"mcq", prompt:"Choisis « Je suis » (identité)", options:["ni naiz","ni nago","ni dut","ni noa"], answer:"ni naiz", explain:"«izan» = être identitaire; «egon» = état/lieu."},
+      {type:"mcq", prompt:"« Il est (se trouve) » → egon", options:["hura dago","hura da","hura doa","hura dator"], answer:"hura dago", explain:"Avec «egon»: dago/zaude/nago…"},
+      {type:"bank", prompt:"Compose « Je vais » (joan)", acceptable:["noa"], bank:["noa","nator","naiz"], explain:"«joan» (aller) → noa (je)."},
+      {type:"bank", prompt:"Compose « Je viens » (etorri)", acceptable:["nator"], bank:["nator","noa","nago"], explain:"«etorri» (venir) → nator (je)."},
+      {type:"mcq", prompt:"Forme correcte de « avoir » : « Il/elle a »", options:["badut","badu","baduzu","badugu"], answer:"badu", explain:"eduki → badu (il/elle a)."}
+    ]
+  }
+];
+
+/* =================== AUDIO FEEDBACK (Web Audio API) =================== */
+let audioCtx = null;
+function beepOK(){
+  if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
+  const o = audioCtx.createOscillator();
+  const g = audioCtx.createGain();
+  o.type="sine"; o.frequency.value = 880;
+  g.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+  g.gain.exponentialRampToValueAtTime(0.2, audioCtx.currentTime + 0.01);
+  g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.15);
+  o.connect(g).connect(audioCtx.destination); o.start(); o.stop(audioCtx.currentTime + 0.16);
+}
+function beepNO(){
+  if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
+  const o = audioCtx.createOscillator();
+  const g = audioCtx.createGain();
+  o.type="square"; o.frequency.value = 220;
+  g.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+  g.gain.exponentialRampToValueAtTime(0.2, audioCtx.currentTime + 0.01);
+  g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.25);
+  o.connect(g).connect(audioCtx.destination); o.start(); o.stop(audioCtx.currentTime + 0.26);
+}
+
+/* =================== APP LOGIC =================== */
+function $(s, r=document){ return r.querySelector(s) }
+function $all(s, r=document){ return Array.from(r.querySelectorAll(s)) }
+function norm(s){ return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g," ").trim() }
+
+const state = { currentLesson: LESSONS[0].id, qIndex: 0, score: 0, order: [], answered:false };
+
+function speak(text){
+  if(!("speechSynthesis" in window)) return;
+  const u = new SpeechSynthesisUtterance(text);
+  const voices = speechSynthesis.getVoices();
+  const v = voices.find(v=>/eu|basque/i.test(v.lang)) || voices.find(v=>/es-ES|es/i.test(v.lang));
+  if (v) u.voice = v;
+  u.rate = 0.95;
+  speechSynthesis.speak(u);
+}
+
+function saveProgress(){
+  const key = "eu_progress_"+state.currentLesson;
+  const data = {score: state.score, total: getQ().length, ts: Date.now()};
+  localStorage.setItem(key, JSON.stringify(data));
+}
+
+function loadProgress(lessonId){
+  try { return JSON.parse(localStorage.getItem("eu_progress_"+lessonId)) } catch(e){ return null }
+}
+
+function shuffle(arr){ return arr.map(x=>[Math.random(),x]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]); }
+function getLesson(){ return LESSONS.find(l=>l.id===state.currentLesson); }
+function getQ(){ return getLesson().questions; }
+function updateProgressBar(){
+  const pct = Math.round((state.qIndex / getQ().length) * 100);
+  $("#progress").style.width = pct + "%";
+}
+
+function renderLessons(){
+  const list = $("#lesson-list"); list.innerHTML="";
+  LESSONS.forEach((l, idx)=>{
+    const saved = loadProgress(l.id);
+    const div = document.createElement("div");
+    div.className = "lesson-item";
+    div.innerHTML = `
+      <div class="meta"><span class="tag">${l.tag}</span><strong>${idx+1}. ${l.title}</strong></div>
+      <div>${saved ? `<small>Score: ${saved.score}/${saved.total}</small>` : `<small class="muted">Nouveau</small>`}</div>`;
+    div.addEventListener("click", ()=> selectLesson(l.id));
+    list.appendChild(div);
+  });
+}
+
+function renderVocabPreview(){
+  const box = $("#vocab-preview"); box.innerHTML="";
+  const lesson = getLesson();
+  lesson.vocab.forEach(row=>{
+    const div = document.createElement("div");
+    div.className = "kv";
+    div.innerHTML = `<div class="eu">${row.eu} ${row.note?`<small>· ${row.note}</small>`:""}</div>
+                     <div class="fr">${row.fr}</div>
+                     <button class="speak" title="Écouter" aria-label="Écouter ${row.eu}">🔊</button>`;
+    div.querySelector(".speak").addEventListener("click", ()=> speak(row.eu));
+    box.appendChild(div);
+  });
+  $("#lesson-badge").textContent = "Leçon " + (LESSONS.findIndex(x=>x.id===state.currentLesson)+1);
+  $("#lesson-title").textContent = lesson.title;
+}
+
+function selectLesson(id){
+  state.currentLesson = id;
+  state.qIndex = 0;
+  state.score = 0;
+  state.order = shuffle(getQ().slice());
+  renderVocabPreview();
+  renderQuestion();
+  updateProgressBar();
+}
+
+function showExplain(q, userVal, correct){
+  const ex = $("#explain");
+  let extra = q.explain ? " " + q.explain : "";
+  if (q.type === "bank" && userVal !== undefined){
+    ex.innerHTML = `Tu as composé : <code>${userVal || "—"}</code>. Attendu : <strong>${(q.acceptable||[correct])[0] || correct}</strong>.${extra? "<br>"+extra:""}`;
+  } else {
+    ex.textContent = extra.trim();
+  }
+}
+
+function renderQuestion(){
+  const q = state.order[state.qIndex] || state.order[0];
+  $("#q-prompt").textContent = q.prompt;
+  $("#feedback").textContent = "";
+  $("#explain").textContent = "";
+  $("#bank-wrap").classList.add("hide");
+  $("#finish").classList.add("hide");
+  $("#next").disabled = true;
+  state.answered = false;
+  const opts = $("#q-options"); opts.innerHTML="";
+
+  if (q.type === "mcq"){
+    q.options.forEach(op=>{
+      const b = document.createElement("button");
+      b.className = "option";
+      b.textContent = op;
+      b.addEventListener("click", ()=>{
+        if (state.answered) return;
+        const ok = norm(op) === norm(q.answer);
+        endQuestion(ok, q, op, q.answer, /*autoAdvance*/ ok);
+      });
+      opts.appendChild(b);
+    });
+  } else if (q.type === "bank"){
+    $("#q-options").innerHTML = "";
+    $("#bank-wrap").classList.remove("hide");
+    setupWordBank(q);
+  }
+
+  $("#prev").disabled = state.qIndex===0;
+  if (state.qIndex>=getQ().length-1){ $("#finish").classList.remove("hide"); }
+}
+
+let bankState = { built: [] };
+
+function setupWordBank(q){
+  bankState.built = [];
+  const strip = $("#answer-strip");
+  const wb = $("#wordbank");
+  strip.innerHTML = "";
+  wb.innerHTML = "";
+  const pool = shuffle([...(q.bank||[]), ...((q.distractors||[]))]);
+  pool.forEach(tok=>{
+    const btn = document.createElement("button");
+    btn.className = "tile";
+    btn.textContent = tok;
+    btn.addEventListener("click", ()=>{
+      if (state.answered) return;
+      bankState.built.push(tok);
+      renderBankAnswer();
+      checkBank(q);
+    });
+    wb.appendChild(btn);
+  });
+  $("#bank-undo").onclick = ()=>{
+    if (state.answered) return;
+    bankState.built.pop();
+    renderBankAnswer();
+  };
+  $("#bank-clear").onclick = ()=>{
+    if (state.answered) return;
+    bankState.built = [];
+    renderBankAnswer();
+  };
+  function renderBankAnswer(){
+    strip.innerHTML = "";
+    bankState.built.forEach(t=>{
+      const s = document.createElement("span");
+      s.className = "answer-token";
+      s.textContent = t;
+      strip.appendChild(s);
+    });
+  }
+  function checkBank(q){
+    const user = bankState.built.join(" ").replace(" ,", ",").replace(" ?", "?");
+    const ok = (q.acceptable||[]).some(a => norm(a) === norm(user));
+    if (ok){
+      endQuestion(true, q, user, (q.acceptable||[])[0], /*autoAdvance*/ true);
+    }
+  }
+}
+
+function endQuestion(ok, q, userVal, correct, autoAdvance=false){
+  state.answered = true;
+  if (ok){ state.score++; $("#feedback").textContent = "✅ Zorionak!"; $("#feedback").className="feedback ok"; beepOK(); }
+  else { $("#feedback").textContent = "❌ Erreur"; $("#feedback").className="feedback no"; beepNO(); }
+  // disable mcq buttons
+  $all(".option").forEach(b=> b.disabled = true);
+  // explanation area
+  showExplain(q, userVal, correct);
+  // next handling
+  if (autoAdvance){
+    setTimeout(()=> nextQ(+1), 800); // auto-advance on correct
+  } else {
+    setTimeout(()=>{ $("#next").disabled = false; }, 600);
+  }
+  updateProgressBar();
+}
+
+function nextQ(delta){
+  if (!state.answered && delta>0){
+    $("#feedback").textContent = "Réponds avant de continuer.";
+    return;
+  }
+  const len = getQ().length;
+  let ni = state.qIndex + delta;
+  if (ni < 0) ni = 0;
+  if (ni >= len) ni = len-1;
+  state.qIndex = ni;
+  renderQuestion();
+}
+
+function finishLesson(){
+  if (!state.answered){ $("#feedback").textContent = "Réponds à la question en cours."; return; }
+  saveProgress();
+  const total = getQ().length;
+  const txt = `Score: ${state.score}/${total}`;
+  alert(txt);
+  // reset for replay
+  state.qIndex = 0; state.score = 0; state.order = shuffle(getQ().slice());
+  renderQuestion(); updateProgressBar();
+}
+
+window.addEventListener("DOMContentLoaded", ()=>{
+  renderLessons();
+  selectLesson(LESSONS[0].id);
+  $("#start").onclick = ()=>{ state.qIndex=0; state.score=0; state.order=shuffle(getQ().slice()); renderQuestion(); updateProgressBar(); };
+  $("#tts-all").onclick = ()=>{
+    const list = getLesson().vocab.map(v=>v.eu);
+    let i=0;
+    function step(){ if (i>=list.length) return; speak(list[i++]); setTimeout(step, 650); }
+    step();
+  };
+  $("#prev").onclick = ()=> nextQ(-1);
+  $("#next").onclick = ()=> nextQ(+1);
+  $("#finish").onclick = finishLesson;
+  if (window.speechSynthesis) window.speechSynthesis.getVoices();
+  // Resume AudioContext on first user gesture (iOS policy)
+  window.addEventListener('touchstart', ()=>{ if(audioCtx && audioCtx.state==='suspended') audioCtx.resume(); }, {once:true});
+  window.addEventListener('click', ()=>{ if(audioCtx && audioCtx.state==='suspended') audioCtx.resume(); }, {once:true});
+});
+  </script>
 </body>
 </html>
