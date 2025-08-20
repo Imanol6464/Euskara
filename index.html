@@ -4,117 +4,104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Euskara · Ikasi — Light v4</title>
+  <title>Euskara · Ikasi · Niveau 1 (10 leçons) — v5</title>
   <meta name="theme-color" content="#ffffff">
   <style>
 :root{
   --bg:#f9fafb; --surface:#ffffff; --surface-2:#f3f4f6; --border:#e5e7eb;
-  --text:#111827; --muted:#6b7280; --primary:#007A3D; --warn:#D90429; --blue:#3b82f6;
+  --text:#111827; --muted:#6b7280;
+  --green:#007A3D; --green2:#059669;
+  --red:#D90429; --blue:#2563eb;
   --shadow: 0 8px 24px rgba(17,24,39,.08);
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;}
-a{color:var(--blue);text-decoration:none}
 header{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.9);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--border)}
 .container{max-width:1100px;margin:0 auto;padding:12px 16px}
 .brand{display:flex;align-items:center;gap:12px}
-.logo{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--warn),var(--primary));color:white;font-weight:900}
-.title h1{margin:0;font-size:20px;letter-spacing:.2px}
+.logo{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--red),var(--green));color:white;font-weight:900}
+.title h1{margin:0;font-size:20px}
 .title small{color:var(--muted)}
 main{max-width:1100px;margin:18px auto 64px auto;padding:0 16px}
 .grid{display:grid;gap:16px;grid-template-columns: 1fr}
 @media (min-width: 920px){ .grid{grid-template-columns: 380px 1fr} }
 .card{background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:16px}
-.card h2{margin:6px 0 10px}
-.badge{display:inline-flex;align-items:center;gap:6px;font-weight:700;background:#e8f5eb;border:1px solid #c1e5cd;color:var(--primary);padding:4px 10px;border-radius:999px}
+.badge{display:inline-flex;align-items:center;gap:6px;font-weight:700;background:#e8f5eb;border:1px solid #c1e5cd;color:var(--green);padding:4px 10px;border-radius:999px}
 .controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-.btn{appearance:none;border:none;cursor:pointer;font-weight:700;border-radius:12px;padding:14px 16px;background:#ffffff;border:2px solid var(--border);color:#1f2937;min-height:48px;transition:transform .05s ease, box-shadow .15s ease}
+.btn{appearance:none;border:none;cursor:pointer;font-weight:700;border-radius:12px;padding:14px 16px;background:#ffffff;border:2px solid var(--border);color:#1f2937;min-height:48px;transition:transform .05s ease}
 .btn:active{transform:translateY(1px)}
-.btn.primary{background:linear-gradient(180deg,#82f2b2,#3ddc84);border:none;color:#05351f}
-.btn.ghost{background:#ffffff;border:2px solid var(--border)}
-.btn.ok{background:linear-gradient(180deg,#7ae582,var(--primary));color:#063d1a;border:none}
-.btn.warn{background:linear-gradient(180deg,#ffb3b3,var(--warn));color:#5b0b0b;border:none}
+.btn.primary{background:linear-gradient(180deg,#9ef0c1,#53e38e);border:none;color:#05351f}
+.btn.green{background:linear-gradient(180deg,#86efac,var(--green));border:none;color:#05351f}
+.btn.red{background:linear-gradient(180deg,#ffb3b3,var(--red));border:none;color:#5b0b0b}
 .progress{height:12px;background:#e5e7eb;border:1px solid #e5e7eb;border-radius:999px;overflow:hidden;margin-top:10px}
-.progress > div{height:100%;background:linear-gradient(90deg,#8ce9af,var(--primary));width:0%}
+.progress > div{height:100%;background:linear-gradient(90deg,#8ce9af,var(--green));width:0%}
+.lesson-list{display:grid;gap:8px}
+.lesson-item{display:flex;align-items:center;justify-content:space-between;padding:14px;border:1px solid var(--border);border-radius:12px;background:#fff}
+.lesson-item .meta{display:flex;gap:10px;align-items:center}
+.tag{font-size:12px;padding:4px 8px;border:1px solid #cdebd7;border-radius:999px;color:var(--green);background:#e8f5eb}
 .kv{display:grid;grid-template-columns: 1fr auto auto;align-items:center;gap:8px;padding:12px;border-radius:12px;border:1px solid var(--border);background:var(--surface-2)}
 .kv .eu{font-weight:800}
 .kv small{color:var(--muted)}
-.kv .speak{background:transparent;border:none;font-size:20px;cursor:pointer;color:var(--primary)}
-.section-title{display:flex;align-items:center;gap:10px;margin:8px 0}
-.section-title h3{margin:0}
-.list{display:grid;gap:8px}
-.lesson-list{display:grid;gap:8px}
-.lesson-item{display:flex;align-items:center;justify-content:space-between;padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--surface)}
-.lesson-item .meta{display:flex;gap:10px;align-items:center}
-.tag{font-size:12px;padding:4px 8px;border:1px solid #cdebd7;border-radius:999px;color:var(--primary);background:#e8f5eb}
-hr{border:none;border-top:1px solid var(--border);margin:8px 0}
+.kv .speak{background:transparent;border:none;font-size:20px;cursor:pointer;color:var(--green)}
 .q{display:grid;gap:12px}
-.q .prompt{font-weight:800;font-size:18px}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.counter{font-weight:800}
+.prompt{font-weight:800;font-size:18px}
 .options{display:grid;gap:10px}
 .option{padding:14px;text-align:left;border:2px solid var(--border);border-radius:12px;background:#ffffff;color:var(--text);cursor:pointer;min-height:48px}
-.option.correct{border-color: var(--primary); background: #f0fff4}
-.option.wrong{border-color: var(--warn); background: #fff5f5}
+.option.correct{border-color: var(--green); background: #f0fff4}
+.option.wrong{border-color: var(--red); background: #fff5f5}
 .option:disabled{opacity:.7;cursor:not-allowed}
-.feedback{min-height:22px}
-.feedback.ok{color:var(--primary)}
-.feedback.no{color:var(--warn)}
-.explain{color:var(--muted);font-size:14px}
 .wordbank{display:flex;flex-wrap:wrap;gap:8px}
 .tile{padding:10px 12px;border-radius:12px;border:2px solid var(--border);background:#ffffff;cursor:pointer}
 .tile.used{opacity:.6}
 .answer-strip{display:flex;flex-wrap:wrap;gap:8px;min-height:44px;padding:8px;border:2px dashed #d1d5db;border-radius:12px;background:#f8fafc}
 .answer-token{padding:10px 12px;border-radius:12px;border:2px solid var(--border);background:#e7f6ee}
+.feedback{min-height:22px}
+.feedback.ok{color:var(--green)}
+.feedback.no{color:var(--red)}
+.explain{color:var(--muted);font-size:14px}
+.footer-controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
 footer{max-width:1100px;margin:30px auto;padding:0 16px;color:var(--muted);text-align:center}
 .hide{display:none !important}
 
 /* IMMERSIVE MODE */
-body.immersive header{position:static; border-bottom:none}
+body.immersive header{position:static;border-bottom:none}
 body.immersive .grid{grid-template-columns: 1fr}
 body.immersive #picker{display:none}
 body.immersive #quiz-area{min-height: calc(100vh - 120px)}
 
-/* END MODAL */
-#end-overlay{position:fixed;inset:0;background:rgba(17,24,39,.55);display:none;align-items:center;justify-content:center;z-index:50}
-#end-modal{background:#ffffff;border-radius:20px;box-shadow:0 20px 50px rgba(0,0,0,.2);padding:24px;max-width:520px;width:92%;text-align:center;border:1px solid #e5e7eb}
-#end-modal h2{margin-top:0}
-#confetti{position:fixed;inset:0;pointer-events:none;z-index:40}
+/* END SCREEN (modal) */
+#end-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;align-items:center;justify-content:center;z-index:20}
+#end-card{background:#fff;border-radius:16px;box-shadow:var(--shadow);max-width:520px;width:92%;padding:20px;border:1px solid var(--border);text-align:center}
+#end-card h2{margin-top:0}
+#end-actions{display:flex;gap:10px;justify-content:center;margin-top:12px;flex-wrap:wrap}
 
-/* Mobile */
+/* Confetti canvas */
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:25}
+
 @media (max-width: 919px){
-  .controls{gap:12px}
   .btn, .option{width:100%}
-  .kv{grid-template-columns: 1fr auto}
 }
   </style>
 </head>
 <body>
   <canvas id="confetti"></canvas>
-  <div id="end-overlay" role="dialog" aria-modal="true">
-    <div id="end-modal">
-      <h2>🎉 Leçon terminée !</h2>
-      <p id="end-score"></p>
-      <div class="controls" style="justify-content:center">
-        <button class="btn ok" id="go-next">Leçon suivante ▶</button>
-        <button class="btn ghost" id="back-list">Retour à la liste</button>
-      </div>
-    </div>
-  </div>
-
   <header>
     <div class="container brand">
       <div class="logo">EU</div>
       <div class="title">
         <h1>Euskara · Ikasi</h1>
-        <small>Niveau 1 • Basque batua</small>
+        <small>Niveau 1 • 10 leçons • Basque batua</small>
       </div>
     </div>
   </header>
 
   <main class="container grid">
     <div class="card" id="picker">
-      <div class="section-title">
+      <div class="topbar">
         <span class="badge">Parcours Débutant</span>
-        <h3>Choisis une leçon</h3>
+        <div style="color:var(--muted)">Progression locale</div>
       </div>
       <div class="lesson-list" id="lesson-list"></div>
       <hr />
@@ -123,47 +110,53 @@ body.immersive #quiz-area{min-height: calc(100vh - 120px)}
         <div class="list" id="vocab-preview"></div>
         <div class="controls">
           <button class="btn" id="tts-all">🔊 Tout écouter</button>
-          <button class="btn primary" id="start">Commencer les exercices</button>
+          <button class="btn green" id="start">Commencer la leçon</button>
         </div>
         <div class="progress" aria-label="Progression leçon"><div id="progress"></div></div>
       </div>
     </div>
 
     <div class="card" id="quiz-area">
-      <div class="section-title">
+      <div class="topbar">
         <span class="badge" id="lesson-badge">Leçon</span>
-        <h3 id="lesson-title">—</h3>
+        <span class="counter" id="counter">1/30</span>
       </div>
+      <h3 id="lesson-title">—</h3>
       <div class="q">
         <div class="prompt" id="q-prompt"></div>
         <div class="options" id="q-options"></div>
+
         <div id="bank-wrap" class="hide">
           <div class="answer-strip" id="answer-strip" aria-label="Réponse"></div>
           <div class="wordbank" id="wordbank"></div>
-          <div class="controls">
-            <button class="btn ghost" id="bank-undo">Effacer le dernier</button>
-            <button class="btn warn" id="bank-clear">Tout effacer</button>
-          </div>
         </div>
+
         <div class="feedback" id="feedback"></div>
         <div class="explain" id="explain"></div>
-        <div class="controls">
-          <button class="btn ghost" id="prev">◀ Retour à la liste</button>
-          <button class="btn primary" id="next" disabled>Suivant ▶</button>
-          <button class="btn ok hide" id="finish">Terminer la leçon</button>
+
+        <div class="footer-controls">
+          <button class="btn red" id="idk">Je ne sais pas</button>
+          <button class="btn green" id="next" disabled>Suivant ▶</button>
         </div>
       </div>
     </div>
   </main>
 
-  <footer>Light UI • accents basques • immersion • ~30 items/leçon • re-ask des erreurs • délai de lecture après bonne réponse • écran de fin + confettis.</footer>
+  <div id="end-overlay">
+    <div id="end-card">
+      <h2>🎉 Bravo ! Leçon terminée</h2>
+      <p id="end-summary"></p>
+      <div id="end-actions">
+        <button class="btn green" id="end-next">Leçon suivante ▶</button>
+        <button class="btn" id="end-home">Retour à la liste</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>v5 · UI claire • rouge/vert basques • 30 items/leçon • erreurs reposées • compteur n/30 • bouton “Je ne sais pas” • confettis fin de leçon • euskara batua.</footer>
 
   <script>
-/* ======= SETTINGS ======= */
-const AUTO_ADVANCE_MS = 1800; // ralentit l'auto‑avance pour laisser lire l'explication
-const NEXT_ENABLE_MS = 700;   // délai avant d'activer Suivant quand c'est faux
-
-/* ======= BASE DATA (abridged for brevity, same as v3) ======= */
+/* ======== Base lessons (3-10 are full content, not just reviews) ======== */
 const BASE = [
   { id:"l1", title:"Agurrak · Salutations", tag:"Bases",
     vocab:[
@@ -171,13 +164,14 @@ const BASE = [
       {eu:"Egun on", fr:"Bonjour (matin)"},
       {eu:"Arratsalde on", fr:"Bon après-midi"},
       {eu:"Gabon", fr:"Bonsoir / Bonne nuit"},
-      {eu:"Agur", fr:"Au revoir"}],
+      {eu:"Agur", fr:"Au revoir"}
+    ],
     questions:[
-      {type:"mcq", prompt:"« Bonjour (matin) » en euskara batua ?", options:["Egun on","Kaixo","Gabon","Arratsalde on"], answer:"Egun on"},
-      {type:"mcq", prompt:"Que signifie « Agur » ?", options:["Merci","Au revoir","S'il te plaît","À demain"], answer:"Au revoir"},
-      {type:"mcq", prompt:"Traduction de « Gabon »", options:["Bonsoir/Bonne nuit","Bonjour","Bon après-midi","Salut"], answer:"Bonsoir/Bonne nuit"},
-      {type:"bank", prompt:"Compose « Bonjour / Salut »", acceptable:["kaixo"], bank:["kaixo","egun","on","agur","gabon","arratsalde","on"]},
-      {type:"bank", prompt:"Compose « Bon après‑midi »", acceptable:["arratsalde on","arratsaldeon"], bank:["arratsalde","on","egun","gabon","kaixo"]}
+      {type:"mcq", prompt:"« Bonjour (matin) » en euskara batua ?", options:["Egun on","Kaixo","Gabon","Arratsalde on"], answer:"Egun on", explain:"«Egun on» s’emploie le matin."},
+      {type:"mcq", prompt:"Que signifie « Agur » ?", options:["Merci","Au revoir","S'il te plaît","À demain"], answer:"Au revoir", explain:"«Agur» = au revoir."},
+      {type:"mcq", prompt:"Choisis la bonne traduction : « Gabon »", options:["Bonsoir/Bonne nuit","Bonjour","Bon après-midi","Salut"], answer:"Bonsoir/Bonne nuit", explain:"«Gabon» s’utilise le soir/nuit."},
+      {type:"bank", prompt:"Compose « Bonjour / Salut » (général)", acceptable:["kaixo"], bank:["kaixo","egun","on","agur","gabon","arratsalde","on"], explain:"Attendu : «Kaixo»."},
+      {type:"bank", prompt:"Compose « Bon après‑midi »", acceptable:["arratsalde on","arratsaldeon"], bank:["arratsalde","on","egun","gabon","kaixo"], explain:"Deux orthographes: «arratsalde on» / «arratsaldeon»."}
     ]},
   { id:"l2", title:"Adeitasuna · Politesse", tag:"Bases",
     vocab:[
@@ -185,339 +179,400 @@ const BASE = [
       {eu:"Mesedez", fr:"S'il vous plaît"},
       {eu:"Barkatu", fr:"Pardon / Excusez‑moi"},
       {eu:"Ez dut ulertzen", fr:"Je ne comprends pas"},
-      {eu:"Polikiago, mesedez", fr:"Plus lentement, s'il vous plaît"}],
+      {eu:"Polikiago, mesedez", fr:"Plus lentement, s'il vous plaît"}
+    ],
     questions:[
-      {type:"mcq", prompt:"« Merci beaucoup » en basque ?", options:["Eskerrik asko","Mila esker","Mesedez","Ondo"], answer:"Eskerrik asko"},
+      {type:"mcq", prompt:"« Merci beaucoup » en basque ?", options:["Eskerrik asko","Mila esker","Mesedez","Ondo"], answer:"Eskerrik asko", explain:"«Eskerrik asko» (batua). «Mila esker» = merci."},
       {type:"mcq", prompt:"« Mesedez » signifie…", options:["Excusez-moi","S'il vous plaît","Bonjour","Au revoir"], answer:"S'il vous plaît"},
       {type:"mcq", prompt:"« Ez dut ulertzen »", options:["Je ne comprends pas","Je comprends","Parlez plus fort","Où sont les toilettes ?"], answer:"Je ne comprends pas"},
       {type:"bank", prompt:"Compose « Excusez‑moi »", acceptable:["barkatu"], bank:["barkatu","eskerrik","asko","mesedez","kaixo"]},
       {type:"bank", prompt:"Compose « Plus lentement, s’il vous plaît »", acceptable:["polikiago, mesedez","polikiago mesedez"], bank:["polikiago,","mesedez","polikiago","egun","on","eskerrik","asko"]}
     ]},
-  // ... (rest of lessons identical to v3; omitted for brevity in this snippet)
+  { id:"l3", title:"Aurkezpena · Se présenter", tag:"Conversation",
+    vocab:[
+      {eu:"Nire izena … da", fr:"Je m'appelle …"},
+      {eu:"Ni Manu naiz", fr:"Je suis Manu"},
+      {eu:"Non bizi zara?", fr:"Où habites‑tu ?"},
+      {eu:"Ni Donostian bizi naiz", fr:"J'habite à Saint‑Sébastien"},
+      {eu:"Zer moduz?", fr:"Comment ça va ?"},
+      {eu:"Ondo / Oso ondo / Gaizki", fr:"Bien / Très bien / Mal"}
+    ],
+    questions:[
+      {type:"mcq", prompt:"« Je m'appelle Ainhoa »", options:["Nire izena Ainhoa da","Ni Ainhoa zara","Ainhoa naiz nire izena","Nire izena da Ainhoa"], answer:"Nire izena Ainhoa da", explain:"Structure batua: «Nire izena X da»."},
+      {type:"mcq", prompt:"« Où habites‑tu ? »", options:["Non bizi zara?","Non zaude?","Non bizi naiz?","Nor zara?"], answer:"Non bizi zara?"},
+      {type:"bank", prompt:"Compose « Je suis Manu »", acceptable:["ni manu naiz"], bank:["ni","Manu","naiz","nago","zara","da"]},
+      {type:"bank", prompt:"Compose « Comment ça va ? »", acceptable:["zer moduz?","zer moduz"], bank:["zer","moduz","?","non","zara","ondo"]},
+      {type:"mcq", prompt:"Choisis « J'habite à Donostia »", options:["Ni Donostian bizi naiz","Ni Donostiara noa","Ni Donostian nago","Donostia dut"], answer:"Ni Donostian bizi naiz"}
+    ]},
+  { id:"l4", title:"Behar oinarrizkoak · Besoins", tag:"Survie",
+    vocab:[
+      {eu:"Ura nahi dut", fr:"Je veux de l'eau"},
+      {eu:"Kafe bat, mesedez", fr:"Un café, s'il vous plaît"},
+      {eu:"Non dago komuna?", fr:"Où sont les toilettes ?"},
+      {eu:"Zenbat da?", fr:"C'est combien ?"},
+      {eu:"Lagundu nazakezu?", fr:"Pouvez‑vous m'aider ?"}
+    ],
+    questions:[
+      {type:"mcq", prompt:"Traduction de « Non dago komuna? »", options:["Où sont les toilettes ?","Où est la gare ?","Où est l'hôtel ?","Où est la plage ?"], answer:"Où sont les toilettes ?"},
+      {type:"bank", prompt:"Compose « Je veux de l’eau »", acceptable:["ura nahi dut"], bank:["ura","nahi","dut","kafe","bat","mesedez"]},
+      {type:"mcq", prompt:"« C'est combien ? »", options:["Zenbat da?","Zenbat gara?","Zenbat dugu?","Zenbat dena?"], answer:"Zenbat da?"},
+      {type:"bank", prompt:"Compose « Un café, s'il vous plaît »", acceptable:["kafe bat, mesedez","kafe bat mesedez"], bank:["kafe","bat,","mesedez","bat","egun","on"]},
+      {type:"mcq", prompt:"« Lagundu nazakezu? »", options:["Pouvez‑vous m'aider ?","Avez‑vous du temps ?","Où vais‑je ?","Parlez plus doucement"], answer:"Pouvez‑vous m'aider ?"}
+    ]},
+  { id:"l5", title:"Zenbakiak eta egunak · Nombres & jours", tag:"Bases",
+    vocab:[
+      {eu:"bat, bi, hiru, lau, bost", fr:"1, 2, 3, 4, 5"},
+      {eu:"sei, zazpi, zortzi, bederatzi, hamar", fr:"6, 7, 8, 9, 10"},
+      {eu:"astelehena", fr:"lundi"},
+      {eu:"asteartea", fr:"mardi"},
+      {eu:"asteazkena", fr:"mercredi"},
+      {eu:"osteguna / ostirala", fr:"jeudi / vendredi"},
+      {eu:"larunbata / igandea", fr:"samedi / dimanche"}
+    ],
+    questions:[
+      {type:"mcq", prompt:"« 7 » en basque", options:["zazpi","zortzi","sei","bederatzi"], answer:"zazpi"},
+      {type:"mcq", prompt:"« osteguna »", options:["jeudi","vendredi","samedi","dimanche"], answer:"jeudi"},
+      {type:"bank", prompt:"Compose « trois »", acceptable:["hiru"], bank:["bat","bi","hiru","lau","bost"]},
+      {type:"mcq", prompt:"« asteazkena »", options:["mercredi","mardi","jeudi","samedi"], answer:"mercredi"},
+      {type:"bank", prompt:"Compose « dix »", acceptable:["hamar"], bank:["hamar","zazpi","zortzi"]}
+    ]},
+  { id:"l6", title:"Familia · Famille", tag:"Vie",
+    vocab:[
+      {eu:"ama", fr:"mère"},
+      {eu:"aita", fr:"père"},
+      {eu:"semea / alaba", fr:"fils / fille"},
+      {eu:"anai / arreba", fr:"frère / sœur (parlant = homme)"},
+      {eu:"neba / ahizpa", fr:"frère / sœur (parlant = femme)"},
+      {eu:"laguna", fr:"ami(e) / partenaire (selon contexte)"}
+    ],
+    questions:[
+      {type:"mcq", prompt:"« ama »", options:["mère","père","tante","grand‑mère"], answer:"mère"},
+      {type:"mcq", prompt:"« alaba »", options:["fille","fils","soeur","mère"], answer:"fille"},
+      {type:"bank", prompt:"Compose « père »", acceptable:["aita"], bank:["aita","ama","anai","arreba"]},
+      {type:"mcq", prompt:"Paire correcte", options:["anai/arreba","anai/ahizpa","neba/arreba","semea/arreba"], answer:"anai/arreba"},
+      {type:"bank", prompt:"Compose « ami(e) »", acceptable:["laguna"], bank:["laguna","lagunak","lagun"]}
+    ]},
+  { id:"l7", title:"Jatea eta edatea · Manger/boire", tag:"Vie",
+    vocab:[
+      {eu:"ogi", fr:"pain"},
+      {eu:"gazta", fr:"fromage"},
+      {eu:"arraina / haragia", fr:"poisson / viande"},
+      {eu:"barazkiak / fruta", fr:"légumes / fruits"},
+      {eu:"ura / ardoa / garagardoa", fr:"eau / vin / bière"}
+    ],
+    questions:[
+      {type:"mcq", prompt:"« ogi »", options:["pain","lait","fromage","riz"], answer:"pain"},
+      {type:"bank", prompt:"Compose « fromage »", acceptable:["gazta"], bank:["gazta","ogi","ardoa"]},
+      {type:"mcq", prompt:"« ardoa »", options:["vin","eau","bière","jus"], answer:"vin"},
+      {type:"bank", prompt:"Compose « eau »", acceptable:["ura"], bank:["ura","garagardoa","ogi"]},
+      {type:"mcq", prompt:"« arraina »", options:["poisson","viande","salade","pomme"], answer:"poisson"}
+    ]},
+  { id:"l8", title:"Tokian toki · Lieux & directions", tag:"Survie",
+    vocab:[
+      {eu:"Non dago …?", fr:"Où est … ?"},
+      {eu:"ezker / eskuin", fr:"gauche / droite"},
+      {eu:"zuzen", fr:"tout droit"},
+      {eu:"gertu / urrun", fr:"près / loin"},
+      {eu:"plaza / kalea / geltokia", fr:"place / rue / gare"}
+    ],
+    questions:[
+      {type:"mcq", prompt:"« ezker »", options:["gauche","droite","loin","près"], answer:"gauche"},
+      {type:"mcq", prompt:"« zuzen »", options:["tout droit","à gauche","lentement","plus tard"], answer:"tout droit"},
+      {type:"bank", prompt:"Compose « Où est la gare ? »", acceptable:["non dago geltokia?","non dago geltokia"], bank:["non","dago","geltokia","?","kaixo","gertu"]},
+      {type:"mcq", prompt:"« gertu »", options:["près","loin","haut","bas"], answer:"près"},
+      {type:"bank", prompt:"Compose « droite »", acceptable:["eskuin"], bank:["eskuin","ezker","zuzen"]}
+    ]},
+  { id:"l9", title:"Ordua eta egunerokoa · Temps & routine", tag:"Vie",
+    vocab:[
+      {eu:"Noiz?", fr:"Quand ?"},
+      {eu:"Gaur / bihar / atzo", fr:"aujourd'hui / demain / hier"},
+      {eu:"goizean / arratsaldean / gauean", fr:"le matin / l'après‑midi / le soir"},
+      {eu:"Goizeko bederatzietan", fr:"À neuf heures du matin"},
+      {eu:"Astelehenetan lana dut", fr:"Le lundi, j'ai du travail"}
+    ],
+    questions:[
+      {type:"mcq", prompt:"« bihar »", options:["demain","hier","aujourd'hui","tout de suite"], answer:"demain"},
+      {type:"mcq", prompt:"« Noiz? »", options:["Quand ?","Où ?","Qui ?","Combien ?"], answer:"Quand ?"},
+      {type:"bank", prompt:"Compose « aujourd'hui »", acceptable:["gaur"], bank:["gaur","bihar","atzo"]},
+      {type:"mcq", prompt:"« goizean »", options:["le matin","le soir","demain","hier"], answer:"le matin"},
+      {type:"bank", prompt:"Compose « À neuf heures du matin »", acceptable:["goizeko bederatzietan"], bank:["goizeko","bederatzietan","gauean","arratsaldean"]}
+    ]},
+  { id:"l10", title:"Aditzak oinarri · Verbes de base", tag:"Grammaire",
+    vocab:[
+      {eu:"izan (être, ident.)", fr:"ni naiz / zu zara / hura da"},
+      {eu:"egon (être, lieu/état)", fr:"ni nago / zu zaude / hura dago"},
+      {eu:"eduki (avoir)", fr:"badut / baduzu / badu"},
+      {eu:"joan (aller)", fr:"noa / zoaz / doa"},
+      {eu:"etorri (venir)", fr:"nator / zatoz / dator"}
+    ],
+    questions:[
+      {type:"mcq", prompt:"Choisis « Je suis » (identité)", options:["ni naiz","ni nago","ni dut","ni noa"], answer:"ni naiz"},
+      {type:"mcq", prompt:"« Il est (se trouve) » → egon", options:["hura dago","hura da","hura doa","hura dator"], answer:"hura dago"},
+      {type:"bank", prompt:"Compose « Je vais » (joan)", acceptable:["noa"], bank:["noa","nator","naiz"]},
+      {type:"bank", prompt:"Compose « Je viens » (etorri)", acceptable:["nator"], bank:["nator","noa","nago"]},
+      {type:"mcq", prompt:"« Il/elle a » (eduki)", options:["badu","badut","baduzu","badugu"], answer:"badu"}
+    ]},
 ];
-/* For the real file we replicate the rest; but to keep the sample short, we will programmatically clone l1 two more times if missing. */
-while (BASE.length < 10){
-  const i = BASE.length+1;
-  BASE.push({ ...JSON.parse(JSON.stringify(BASE[0])), id:"l"+i, title:"Leçon "+i+" · Révision", tag:"Révision" });
-}
 
-/* ======= Generate ~30 items per lesson ======= */
+/* ======== Build 30 questions per lesson (no pure revision) ======== */
 function shuffle(arr){ return arr.map(x=>[Math.random(),x]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]); }
 function buildLesson(base){
   const res = JSON.parse(JSON.stringify(base));
   let qs = res.questions.slice();
-  base.vocab.forEach(row => {
-    const correctFR = row.fr;
-    const distractFR = base.vocab.map(v=>v.fr).filter(v=>v!==correctFR).sort(()=>Math.random()-0.5).slice(0,3);
-    const opts1 = [correctFR, ...distractFR].sort(()=>Math.random()-0.5);
-    qs.push({type:"mcq", prompt:`Traduction de « ${row.eu} »`, options:opts1, answer:correctFR});
+  base.vocab.forEach(row=>{
+    // EU->FR
+    const frs = base.vocab.map(v=>v.fr);
+    const opts1 = shuffle([row.fr, ...frs.filter(f=>f!==row.fr).slice(0,3)]);
+    qs.push({type:"mcq", prompt:`Traduction de « ${row.eu} »`, options:opts1, answer:row.fr});
 
-    const correctEU = row.eu;
-    const parts = correctEU.split(" ");
-    if (parts.length>1){
-      const bank = Array.from(new Set(parts.concat(["kaixo","egun","on","mesedez","?","bat","eta"]))).sort(()=>Math.random()-0.5).slice(0,7);
-      qs.push({type:"bank", prompt:`Compose « ${row.fr} »`, acceptable:[correctEU.toLowerCase()], bank:bank});
+    // FR->EU (bank if multiword)
+    if (row.eu.split(" ").length>1){
+      const bank = Array.from(new Set(row.eu.split(" ").concat(["kaixo","egun","on","mesedez","?","bat","eta"])));
+      qs.push({type:"bank", prompt:`Compose « ${row.fr} »`, acceptable:[row.eu.toLowerCase()], bank:shuffle(bank).slice(0,7)});
     } else {
-      const distractEU = base.vocab.map(v=>v.eu).filter(v=>v!==correctEU).sort(()=>Math.random()-0.5).slice(0,3);
-      const opts2 = [correctEU, ...distractEU].sort(()=>Math.random()-0.5);
-      qs.push({type:"mcq", prompt:`Choisis « ${row.fr} »`, options:opts2, answer:correctEU});
+      const eus = base.vocab.map(v=>v.eu);
+      const opts2 = shuffle([row.eu, ...eus.filter(e=>e!==row.eu).slice(0,3)]);
+      qs.push({type:"mcq", prompt:`Choisis « ${row.fr} »`, options:opts2, answer:row.eu});
     }
   });
   qs = shuffle(qs);
-  const target = 30;
-  while (qs.length < target){
-    qs = qs.concat(shuffle(res.questions));
-  }
-  res.questions = qs.slice(0,target);
+  while (qs.length<30){ qs = qs.concat(shuffle(res.questions)); }
+  res.questions = qs.slice(0,30);
   return res;
 }
 
-/* ======= Audio beeps ======= */
-let audioCtx = null;
-function beepOK(){
-  if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
-  const o = audioCtx.createOscillator(); const g = audioCtx.createGain();
-  o.type="sine"; o.frequency.value = 900;
-  g.gain.setValueAtTime(0.0001, audioCtx.currentTime);
-  g.gain.exponentialRampToValueAtTime(0.2, audioCtx.currentTime + 0.01);
-  g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.18);
-  o.connect(g).connect(audioCtx.destination); o.start(); o.stop(audioCtx.currentTime + 0.2);
-}
-function beepNO(){
-  if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
-  const o = audioCtx.createOscillator(); const g = audioCtx.createGain();
-  o.type="square"; o.frequency.value = 220;
-  g.gain.setValueAtTime(0.0001, audioCtx.currentTime);
-  g.gain.exponentialRampToValueAtTime(0.2, audioCtx.currentTime + 0.01);
-  g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.3);
-  o.connect(g).connect(audioCtx.destination); o.start(); o.stop(audioCtx.currentTime + 0.32);
-}
+/* ======== Audio beeps ======== */
+let audioCtx=null;
+function beepOK(){ if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)(); const o=audioCtx.createOscillator(),g=audioCtx.createGain(); o.type="sine"; o.frequency.value=900; g.gain.setValueAtTime(0.0001,audioCtx.currentTime); g.gain.exponentialRampToValueAtTime(0.2,audioCtx.currentTime+0.01); g.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime+0.15); o.connect(g).connect(audioCtx.destination); o.start(); o.stop(audioCtx.currentTime+0.16); }
+function beepNO(){ if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)(); const o=audioCtx.createOscillator(),g=audioCtx.createGain(); o.type="square"; o.frequency.value=220; g.gain.setValueAtTime(0.0001,audioCtx.currentTime); g.gain.exponentialRampToValueAtTime(0.2,audioCtx.currentTime+0.01); g.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime+0.25); o.connect(g).connect(audioCtx.destination); o.start(); o.stop(audioCtx.currentTime+0.26); }
 
-/* ======= Confetti ======= */
-const confetti = (function(){
-  let cvs, ctx, W, H, parts = [], running=false, t=0;
-  function resize(){ W = cvs.width = window.innerWidth; H = cvs.height = window.innerHeight; }
-  function spawn(n=120){
-    parts = [];
-    for(let i=0;i<n;i++){
-      parts.push({
-        x: Math.random()*W, y: -20 - Math.random()*H*0.3,
-        r: 4 + Math.random()*6,
-        col: `hsl(${Math.random()*360},90%,60%)`,
-        vx: -1 + Math.random()*2,
-        vy: 1 + Math.random()*3,
-        rot: Math.random()*Math.PI,
-        vr: (-0.1 + Math.random()*0.2)
-      });
-    }
-  }
+/* ======== Confetti ======== */
+const confettiCanvas = document.getElementById('confetti');
+const ctx = confettiCanvas.getContext('2d');
+let confettiPieces=[]; let confettiTimer=null;
+function resizeCanvas(){ confettiCanvas.width=window.innerWidth; confettiCanvas.height=window.innerHeight; }
+window.addEventListener('resize', resizeCanvas); resizeCanvas();
+function launchConfetti(){
+  confettiPieces = Array.from({length:150}).map(()=> ({
+    x: Math.random()*confettiCanvas.width,
+    y: -10,
+    s: Math.random()*6+4,
+    c: Math.random()<0.5 ? "#007A3D" : "#D90429",
+    v: Math.random()*2+2,
+    a: Math.random()*Math.PI
+  }));
+  if (confettiTimer) cancelAnimationFrame(confettiTimer);
   function step(){
-    if(!running) return;
-    t++;
-    ctx.clearRect(0,0,W,H);
-    parts.forEach(p=>{
-      p.x += p.vx; p.y += p.vy; p.rot += p.vr;
-      if (p.y > H+30) p.y = -20, p.x = Math.random()*W;
-      ctx.save();
-      ctx.translate(p.x,p.y); ctx.rotate(p.rot);
-      ctx.fillStyle = p.col;
-      ctx.fillRect(-p.r, -p.r, p.r*2, p.r*2);
-      ctx.restore();
+    ctx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);
+    confettiPieces.forEach(p=>{
+      p.y += p.v; p.x += Math.sin(p.a)*0.8; p.a += 0.05;
+      ctx.fillStyle = p.c;
+      ctx.fillRect(p.x, p.y, p.s, p.s*0.6);
     });
-    requestAnimationFrame(step);
+    confettiPieces = confettiPieces.filter(p=> p.y < confettiCanvas.height+20);
+    if (confettiPieces.length>0){ confettiTimer = requestAnimationFrame(step); }
   }
-  return {
-    init(){
-      cvs = document.getElementById('confetti');
-      ctx = cvs.getContext('2d'); resize(); window.addEventListener('resize', resize);
-    },
-    start(){
-      running = true; spawn(); step();
-      setTimeout(()=>{ running=false; ctx.clearRect(0,0,W,H); }, 2500);
-    }
-  };
-})();
+  step();
+}
 
-/* ======= App State ======= */
-const state = {
-  lessons: [], currentLessonId: null,
-  queue: [], current: null, score: 0, answered:false
-};
-function $(s, r=document){ return r.querySelector(s) }
-function $all(s, r=document){ return Array.from(r.querySelectorAll(s)) }
+/* ======== State ======== */
+function $(s,r=document){return r.querySelector(s)}; function $all(s,r=document){return Array.from(r.querySelectorAll(s))}
 function norm(s){ return (s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/\s+/g," ").trim() }
 
-/* ======= Speech ======= */
-function speak(text){
-  if(!("speechSynthesis" in window)) return;
-  const u = new SpeechSynthesisUtterance(text);
-  const voices = speechSynthesis.getVoices();
-  const v = voices.find(v=>/eu|basque/i.test(v.lang)) || voices.find(v=>/es-ES|es/i.test(v.lang));
-  if (v) u.voice = v;
-  u.rate = 0.95;
-  speechSynthesis.speak(u);
-}
+const state = {
+  lessons: BASE.map(buildLesson),
+  currentLessonId: BASE[0].id,
+  queue: [], current:null, score:0, answered:false,
+};
 
-/* ======= Storage ======= */
-function saveProgress(lessonId, score, total){
-  localStorage.setItem("eu_progress_"+lessonId, JSON.stringify({score,total,ts:Date.now()}));
-}
-function loadProgress(lessonId){
-  try{ return JSON.parse(localStorage.getItem("eu_progress_"+lessonId)) }catch(_){ return null }
-}
+/* ======== Speech ======== */
+function speak(t){ if(!("speechSynthesis" in window)) return; const u=new SpeechSynthesisUtterance(t); const v=speechSynthesis.getVoices().find(v=>/eu|basque/i.test(v.lang))||speechSynthesis.getVoices().find(v=>/es-ES|es/i.test(v.lang)); if(v) u.voice=v; u.rate=0.95; speechSynthesis.speak(u); }
 
-/* ======= UI Renderers ======= */
+/* ======== Storage ======== */
+function saveProgress(id, score, total){ localStorage.setItem("eu_progress_"+id, JSON.stringify({score,total,ts:Date.now()})); }
+function loadProgress(id){ try{return JSON.parse(localStorage.getItem("eu_progress_"+id))}catch(e){return null} }
+
+/* ======== UI rendering ======== */
 function renderLessons(){
-  const list = $("#lesson-list"); list.innerHTML="";
-  state.lessons.forEach((l, idx)=>{
+  const list=$("#lesson-list"); list.innerHTML="";
+  state.lessons.forEach((l,idx)=>{
     const saved = loadProgress(l.id);
     const div = document.createElement("div");
-    div.className = "lesson-item";
-    div.innerHTML = `
-      <div class="meta"><span class="tag">${l.tag}</span><strong>${idx+1}. ${l.title}</strong></div>
-      <div>${saved ? `<small>Score: ${saved.score}/${saved.total}</small>` : `<small class="muted">Nouveau</small>`}</div>`;
-    div.addEventListener("click", ()=> selectLesson(l.id, true));
+    div.className="lesson-item";
+    div.innerHTML = `<div class="meta"><span class="tag">${l.tag}</span><strong>${idx+1}. ${l.title}</strong></div>
+                     <div>${saved?`<small>Score: ${saved.score}/${saved.total}</small>`:`<small class="muted">Nouveau</small>`}</div>`;
+    div.addEventListener("click", ()=> selectLesson(l.id,true));
     list.appendChild(div);
   });
 }
 
 function renderVocabPreview(){
-  const box = $("#vocab-preview"); box.innerHTML="";
-  const lesson = state.lessons.find(l=>l.id===state.currentLessonId);
+  const box=$("#vocab-preview"); box.innerHTML="";
+  const lesson = getLesson();
   lesson.vocab.forEach(row=>{
-    const div = document.createElement("div");
-    div.className = "kv";
-    div.innerHTML = `<div class="eu">${row.eu}</div><div class="fr">${row.fr}</div>
-                     <button class="speak" title="Écouter">🔊</button>`;
-    div.querySelector(".speak").addEventListener("click", ()=> speak(row.eu));
+    const div=document.createElement("div"); div.className="kv";
+    div.innerHTML=`<div class="eu">${row.eu}</div><div class="fr">${row.fr}</div><button class="speak">🔊</button>`;
+    div.querySelector(".speak").onclick=()=>speak(row.eu);
     box.appendChild(div);
   });
   $("#lesson-badge").textContent = "Leçon " + (state.lessons.findIndex(x=>x.id===state.currentLessonId)+1);
   $("#lesson-title").textContent = lesson.title;
 }
 
-function selectLesson(id, immersive=false){
+function getLesson(){ return state.lessons.find(l=>l.id===state.currentLessonId); }
+
+function selectLesson(id, immersive){
   state.currentLessonId = id;
-  const lesson = state.lessons.find(l=>l.id===id);
+  const lesson = getLesson();
   state.queue = shuffle(lesson.questions.slice());
   state.current = null; state.score=0;
   renderVocabPreview();
+  document.body.classList.toggle("immersive", !!immersive);
   nextFromQueue();
-  updateProgress(lesson);
-  if (immersive) document.body.classList.add("immersive");
+  updateProgressBar();
 }
-function exitImmersive(){ document.body.classList.remove("immersive"); }
 
-function updateProgress(lesson){
+function updateProgressBar(){
+  const lesson = getLesson();
   const done = lesson.questions.length - state.queue.length - (state.current ? 0 : 1);
-  const total = lesson.questions.length;
-  const pct = Math.max(0, Math.min(100, Math.round((done/total)*100)));
+  const pct = Math.max(0, Math.min(100, Math.round((done/lesson.questions.length)*100)));
   $("#progress").style.width = pct + "%";
+  const index = Math.max(1, done+1);
+  $("#counter").textContent = `${index}/${lesson.questions.length}`;
 }
 
-function nextFromQueue(){
-  const lesson = state.lessons.find(l=>l.id===state.currentLessonId);
-  if (state.queue.length===0){ finishLesson(lesson); return; }
-  state.current = state.queue.shift(); state.answered=false;
-  renderQuestion(state.current, lesson);
-}
-
-function renderQuestion(q, lesson){
+function renderQuestion(q){
   $("#q-prompt").textContent = q.prompt;
-  $("#feedback").textContent = ""; $("#explain").textContent="";
-  const opts = $("#q-options"); opts.innerHTML="";
-  $("#bank-wrap").classList.add("hide"); $("#finish").classList.add("hide");
+  $("#feedback").textContent = "";
+  $("#explain").innerHTML = "";
+  $("#q-options").innerHTML="";
+  $("#bank-wrap").classList.add("hide");
   $("#next").disabled = true;
+  state.answered=false;
 
   if (q.type==="mcq"){
     q.options.forEach(op=>{
-      const b = document.createElement("button");
-      b.className="option"; b.textContent=op;
-      b.addEventListener("click", ()=>{
-        if (state.answered) return;
+      const b=document.createElement("button"); b.className="option"; b.textContent=op;
+      b.onclick=()=>{
+        if(state.answered) return;
         const ok = norm(op)===norm(q.answer);
-        b.classList.add(ok ? "correct":"wrong");
-        endQuestion(ok, q, op, q.answer, lesson, ok);
-      });
-      opts.appendChild(b);
+        b.classList.add(ok?"correct":"wrong");
+        endQuestion(ok,q,op,q.answer,/*auto*/ok);
+      };
+      $("#q-options").appendChild(b);
     });
   } else if (q.type==="bank"){
-    $("#bank-wrap").classList.remove("hide");
-    setupWordBank(q, lesson);
+    setupWordBank(q);
   }
-
-  $("#prev").textContent = "◀ Retour à la liste";
 }
 
-let bankState = { built: [] };
-function setupWordBank(q, lesson){
+let bankState={built:[]};
+function setupWordBank(q){
   bankState.built=[];
+  $("#bank-wrap").classList.remove("hide");
   const strip=$("#answer-strip"), wb=$("#wordbank");
   strip.innerHTML=""; wb.innerHTML="";
-  const pool = shuffle([...(q.bank||[])]);
+  const pool=shuffle([...(q.bank||[])]);
   pool.forEach(tok=>{
-    const btn=document.createElement("button");
-    btn.className="tile"; btn.textContent=tok;
-    btn.addEventListener("click", ()=>{
-      if (state.answered) return;
-      bankState.built.push(tok); btn.classList.add("used");
-      renderBankAnswer(); checkBank(q, lesson);
-    });
+    const btn=document.createElement("button"); btn.className="tile"; btn.textContent=tok;
+    btn.onclick=()=>{
+      if(state.answered) return;
+      bankState.built.push(tok); btn.classList.add("used"); renderBankAnswer(); checkBank(q);
+    };
     wb.appendChild(btn);
   });
-  $("#bank-undo").onclick = ()=>{
-    if (state.answered) return;
-    const last = bankState.built.pop();
-    const tiles = Array.from($("#wordbank").children).reverse();
-    const t = tiles.find(el => el.classList.contains("used") && el.textContent===last);
-    if (t) t.classList.remove("used");
-    renderBankAnswer();
-  };
-  $("#bank-clear").onclick = ()=>{
-    if (state.answered) return;
-    bankState.built=[]; $all(".tile.used").forEach(el=>el.classList.remove("used"));
-    renderBankAnswer();
-  };
   function renderBankAnswer(){
-    strip.innerHTML=""; bankState.built.forEach(t=>{
-      const s=document.createElement("span"); s.className="answer-token"; s.textContent=t; strip.appendChild(s);
-    });
+    strip.innerHTML=""; bankState.built.forEach(t=>{ const s=document.createElement("span"); s.className="answer-token"; s.textContent=t; strip.appendChild(s); });
   }
-  function checkBank(q, lesson){
-    const user = bankState.built.join(" ").replace(" ,", ",").replace(" ?", "?");
+  function checkBank(q){
+    const user = bankState.built.join(" ").replace(" ,",",").replace(" ?", "?");
     const ok = (q.acceptable||[]).some(a=> norm(a)===norm(user));
-    if (ok){ endQuestion(true, q, user, (q.acceptable||[])[0], lesson, true); }
+    if (ok){ endQuestion(true,q,user,(q.acceptable||[])[0],/*auto*/true); }
   }
 }
 
-function endQuestion(ok, q, userVal, correct, lesson, autoAdvance=false){
-  state.answered = true;
-  if (ok){
-    state.score++; $("#feedback").textContent="✅ Zorionak!"; $("#feedback").className="feedback ok"; beepOK();
-  } else {
-    $("#feedback").textContent="❌ Erreur"; $("#feedback").className="feedback no"; beepNO();
-    state.queue.push(q); // re-ask later
-  }
-  const expect = q.type==="bank" ? ((q.acceptable||[])[0]||"") : q.answer;
-  $("#explain").innerHTML = `Tu as répondu : <code>${(userVal||"—")}</code>. Réponse attendue : <strong>${expect}</strong>.`;
+function vocabMapForLesson(lesson){
+  const map = new Map();
+  lesson.vocab.forEach(v=>{ 
+    // map EU variants to FR
+    v.eu.split("/").map(s=>s.trim()).forEach(eu=> map.set(norm(eu), v.fr));
+  });
+  return map;
+}
+
+function explainTokens(correct, lesson){
+  const map = vocabMapForLesson(lesson);
+  const toks = correct.replace(/[?.,]/g,'').split(/\s+/);
+  const parts = toks.map(t=>{
+    const fr = map.get(norm(t));
+    return fr ? `${t} → ${fr}` : t;
+  });
+  return parts.join(" · ");
+}
+
+function endQuestion(ok, q, userVal, correct, autoAdvance){
+  state.answered=true;
+  const lesson = getLesson();
+  if (ok){ state.score++; $("#feedback").textContent="✅ Zorionak!"; $("#feedback").className="feedback ok"; beepOK(); }
+  else { $("#feedback").textContent="❌ Erreur"; $("#feedback").className="feedback no"; beepNO(); state.queue.push(q); }
+  // Explanation: both short and word-by-word
+  const wordwise = explainTokens(q.type==="bank" ? ((q.acceptable||[])[0]||correct) : correct, lesson);
+  $("#explain").innerHTML = `Tu as répondu : <code>${(userVal||"—")}</code>.<br>
+    Réponse attendue : <strong>${q.type==="bank" ? ((q.acceptable||[])[0]||correct) : correct}</strong><br>
+    <small style="color:var(--muted)">Décomposition : ${wordwise}</small>
+    ${q.explain ? `<br><small style="color:var(--muted)">${q.explain}</small>`:""}`;
 
   if (autoAdvance){
-    setTimeout(()=> nextFromQueue(), AUTO_ADVANCE_MS);
+    setTimeout(()=> nextFromQueue(), 1800); // slower so user can read
   } else {
-    setTimeout(()=>{ $("#next").disabled=false; }, NEXT_ENABLE_MS);
+    setTimeout(()=> $("#next").disabled=false, 650);
   }
-  updateProgress(lesson);
+  updateProgressBar();
 }
 
-function nextFromQueueManual(){
-  if (!state.answered){ $("#feedback").textContent="Réponds avant de continuer."; return; }
-  nextFromQueue();
+function nextFromQueue(){
+  const lesson=getLesson();
+  if (state.queue.length===0){ finishLesson(); return; }
+  state.current = state.queue.shift();
+  renderQuestion(state.current);
+  updateProgressBar();
 }
 
-function finishLesson(lesson){
+/* ======== End of lesson ======== */
+function finishLesson(){
+  const lesson=getLesson();
   saveProgress(lesson.id, state.score, lesson.questions.length);
-  $("#end-score").textContent = `Score : ${state.score}/${lesson.questions.length}`;
-  document.getElementById('end-overlay').style.display='flex';
-  confetti.start();
+  $("#end-summary").textContent = `Score: ${state.score}/${lesson.questions.length}`;
+  $("#end-overlay").style.display="flex";
+  launchConfetti();
 }
 
-function goNextLesson(){
-  const idx = state.lessons.findIndex(l=>l.id===state.currentLessonId);
-  const next = idx>=0 && idx<state.lessons.length-1 ? state.lessons[idx+1] : null;
-  document.getElementById('end-overlay').style.display='none';
-  if (next){ selectLesson(next.id, true); }
-  else { exitImmersive(); }
-}
-
-/* ======= INIT ======= */
+/* ======== Events ======== */
 window.addEventListener("DOMContentLoaded", ()=>{
-  confetti.init();
-  // Build lessons
-  const built = BASE.map(buildLesson);
-  // If snippet omitted rest, replicate first to reach 10 while keeping id/title
-  while (built.length < 10){
-    const idx = built.length+1;
-    const clone = JSON.parse(JSON.stringify(built[0]));
-    clone.id = "l"+idx; clone.title = "Leçon "+idx+" · Révision"; clone.tag="Révision";
-    built.push(clone);
-  }
-  state.lessons = built;
-  state.currentLessonId = state.lessons[0].id;
-
   renderLessons();
-  selectLesson(state.currentLessonId, false);
-
-  $("#start").onclick = ()=> selectLesson(state.currentLessonId, true);
-  $("#tts-all").onclick = ()=>{
-    const lesson = state.lessons.find(l=>l.id===state.currentLessonId);
-    const list = lesson.vocab.map(v=>v.eu); let i=0;
-    (function step(){ if (i>=list.length) return; speak(list[i++]); setTimeout(step, 600); })();
+  renderVocabPreview();
+  document.body.classList.remove("immersive"); // start non-immersive preview
+  $("#start").onclick = ()=>{ document.body.classList.add("immersive"); selectLesson(state.currentLessonId,true); };
+  $("#next").onclick = ()=>{ if(!state.answered){ $("#feedback").textContent="Réponds avant de continuer."; return;} nextFromQueue(); };
+  $("#idk").onclick = ()=>{ if(state.answered) return; // counts as error
+    const q = state.current;
+    const correct = q.type==="bank" ? ((q.acceptable||[])[0]||"") : q.answer;
+    endQuestion(false, q, "(Je ne sais pas)", correct, /*auto*/false);
   };
-  $("#prev").onclick = ()=> exitImmersive();
-  $("#next").onclick = nextFromQueueManual;
-  $("#finish").onclick = ()=> finishLesson(state.lessons.find(l=>l.id===state.currentLessonId));
-  $("#go-next").onclick = goNextLesson;
-  $("#back-list").onclick = ()=>{ document.getElementById('end-overlay').style.display='none'; exitImmersive(); };
+  $("#end-next").onclick = ()=>{
+    $("#end-overlay").style.display="none";
+    const idx = state.lessons.findIndex(l=>l.id===state.currentLessonId);
+    if (idx>=0 && idx<state.lessons.length-1){
+      selectLesson(state.lessons[idx+1].id, true);
+    } else {
+      // dernière leçon -> retour à l'accueil
+      document.body.classList.remove("immersive");
+    }
+  };
+  $("#end-home").onclick = ()=>{
+    $("#end-overlay").style.display="none";
+    document.body.classList.remove("immersive");
+  };
 
   if (window.speechSynthesis) window.speechSynthesis.getVoices();
   window.addEventListener('touchstart', ()=>{ if(audioCtx && audioCtx.state==='suspended') audioCtx.resume(); }, {once:true});
